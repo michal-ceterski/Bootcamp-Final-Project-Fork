@@ -7,12 +7,14 @@ import Header from  './components/Header';
 import { Login} from "./auth/Login";
 import { Register } from "./auth/Register";
 import { Home } from "./components/Home";
+import Footer from './components/Footer';
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
+    <Header/>
       <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -20,6 +22,7 @@ function App() {
         <Route path='register' element={<Register />}> </Route>
       </Routes>
       </BrowserRouter>
+      <Footer/>
     </>
   )
 }
