@@ -5,15 +5,15 @@ const Footer = () => {
     <footer>
       <div className="footer-content">
         <div className="footer-section">
-          <h2>Links</h2>
+          <h2>Linki</h2>
           <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li>
+            <li><a href="/">Strona główna</a></li>
+            <li><a href="/about">O nas</a></li>
+            <li><a href="/contact">Kontakt</a></li>
           </ul>
         </div>
         <div className="footer-section">
-          <h2>Linki</h2>
+          <h2>Media</h2>
           <ul>
             <li><a href="https://tripadvisor.com/">TripAdvisor</a></li>
             <li><a href="https://facebook.com/">Facebook</a></li>
@@ -28,7 +28,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer-bottom">
-        <p>&copy; 2024 Super Hotel. All rights reserved.</p>
+        <p>&copy; 2024 Super Hotel. Wszystkie prawa zastrzeżone.</p>
       </div>
     </footer>
   );
