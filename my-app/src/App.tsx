@@ -4,12 +4,13 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import Header from  './components/Header.tsx';
-import { Login} from "./auth/Login.tsx";
-import { Register } from "./auth/Register.tsx";
-import { Home } from "./components/Home.tsx";
+import Header from  './components/Header';
+import { Login} from "./auth/Login";
+import { Register } from "./auth/Register";
+import { Home } from "./components/Home";
 import Footer from './components/Footer';
 import Gallery from './components/Gallery';
+import BookingForm from './components/Booking';
 
 function App() {
   const [count, setCount] = useState<number>(0)
@@ -26,6 +27,8 @@ function App() {
       </BrowserRouter>
       <Gallery>
       </Gallery>
+      <BookingForm>
+      </BookingForm>
       <Footer/>
     </>
   )

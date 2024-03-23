@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 interface HotelRoom {
   id: number;
@@ -98,7 +98,7 @@ export default BookingForm;
 
 //   return (
 //     <div className="App">
-//       <h1>Witamy w Hotelu Luxus</h1>
+//       <h1>Witamy w Sol Hotel</h1>
 //       <BookingForm userId={userId} />
 //     </div>
 //   );
