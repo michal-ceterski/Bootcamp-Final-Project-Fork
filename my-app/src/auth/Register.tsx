@@ -16,8 +16,10 @@ export const Register = () => {
             .then((e) => console.log(e))
     }
 return(
-    <>
-    <h1>{auth?.currentUser?.email}</h1>
-< Form submitText="Zarejestruj się" handleSubmit={handleSubmit} />
-</>
+    <div className='form.signIn'>
+        <h3>Sign up {auth?.currentUser?.email}</h3>
+        < Form submitText="Sign up" handleSubmit={handleSubmit} />
+        <span>Already have an account?</span>
+        <button className='button_login' onClick={()=> window.location.replace('/login')}>Log in</button> 
+    </div>
 )}
