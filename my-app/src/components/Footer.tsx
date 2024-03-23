@@ -24,7 +24,7 @@ const Footer = () => {
           <h2>Kontakt</h2>
           <p>Adres: Al. Nieznana 5, 01-100 Tajna Góra, Nibylandia</p>
           <p>Tel: +425 89 123 45 67</p>
-          <p>E-mail: info@superhotel.com</p>
+          <p>E-mail: info@solhotel.com</p>
         </div>
       </div>
       <div className="footer-bottom">
