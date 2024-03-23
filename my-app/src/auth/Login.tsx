@@ -20,6 +20,8 @@ return (
     <div className='form.signUp'>
         <h3>Sign in {auth?.currentUser?.email}</h3>
         <Form submitText="Log in" handleSubmit={handleSubmit}/>
+        <span>You dont have an account?</span>
+        <button className='button_register' onClick={()=> window.location.replace('/register')}>Sign up</button> 
     </div>
     </>
  )}

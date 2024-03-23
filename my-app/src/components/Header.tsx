@@ -6,8 +6,8 @@ const Header = () => {
 
     const navigate = useNavigate();
 
-    const handleRegister = () => {
-        navigate( "/register" );
+    const handleLogin = () => {
+        navigate( "/login" );
     };
 
 
@@ -20,7 +20,7 @@ const Header = () => {
             <button className="navi_button">Book Now</button>
             <button className="navi_button">Our Rooms</button>
             <button className="navi_button">Contact Us</button>
-            <button onClick={handleRegister} className="navi_button">Login/Register</button>
+            <button onClick={handleLogin} className="navi_button">Login/Register</button>
             </div>
         </header>
     );

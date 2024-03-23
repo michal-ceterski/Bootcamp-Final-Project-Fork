@@ -19,7 +19,5 @@ return(
     <div className='form.signIn'>
         <h3>Sign up {auth?.currentUser?.email}</h3>
         < Form submitText="Sign up" handleSubmit={handleSubmit} />
-        <span>Already have an account?</span>
-        <button className='button_login' onClick={()=> window.location.replace('/login')}>Log in</button> 
     </div>
 )}
