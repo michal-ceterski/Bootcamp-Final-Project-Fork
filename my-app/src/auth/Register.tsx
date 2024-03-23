@@ -6,7 +6,7 @@ console.log(auth);
 
 interface HandleSubmitProps {
     login: string;
-    password: String;
+    password: string;
 }
 
 export const Register = () => {
