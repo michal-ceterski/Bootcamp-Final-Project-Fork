@@ -2,8 +2,8 @@ import { useState } from "react"
 
 // eslint-disable-next-line react/prop-types
 export const Form = ({ submitText, isPasswordHidden = false, handleSubmit }) => {
-    const [login, setLogin] = useState("")
-    const [password, setPassword] = useState("")
+    const [login, setLogin] = useState<string>("")
+    const [password, setPassword] = useState<string>("")
 
     const onSubmit = e => {
         e.preventDefault()
