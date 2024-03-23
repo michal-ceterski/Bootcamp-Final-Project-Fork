@@ -7,6 +7,10 @@ import Header from  './components/Header';
 import { Login} from "./auth/Login";
 import { Register } from "./auth/Register";
 import { Home } from "./components/Home";
+// import firebase from 'firebase/app';
+// import 'firebase/database';
+
+import Gallery from './components/Gallery';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -20,6 +24,8 @@ function App() {
         <Route path='register' element={<Register />}> </Route>
       </Routes>
       </BrowserRouter>
+      <Gallery>
+      </Gallery>
     </>
   )
 }
