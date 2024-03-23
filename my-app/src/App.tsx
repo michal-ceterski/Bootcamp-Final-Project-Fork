@@ -23,6 +23,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path='login' element={<Login />}> </Route>
         <Route path='register' element={<Register />}> </Route>
+        <Route path="/booking" element={<BookingForm />} />
       </Routes>
       </BrowserRouter>
       <Gallery>

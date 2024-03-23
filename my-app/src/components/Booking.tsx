@@ -87,21 +87,3 @@ const BookingForm = ({ userId }: BookingFormProps) => {
 };
 
 export default BookingForm;
-
-// DO APP.TSX - INTEGRACJA Z APLIKACJĄ
-
-// import React from 'react';
-// import BookingForm from './components/BookingForm';
-
-// const App = () => {
-//   const userId = 123; // Zakładając, że jest ID zalogowanego użytkownika
-
-//   return (
-//     <div className="App">
-//       <h1>Witamy w Sol Hotel</h1>
-//       <BookingForm userId={userId} />
-//     </div>
-//   );
-// };
-
-// export default App;
