@@ -2,7 +2,8 @@ import { NavLink } from 'react-router-dom';
 import { signOut } from "firebase/auth";
 import { auth } from "../api/firebase";
 
-export const Home = ({user}) => {
+
+export const Home = () => {
     const handleSignOut = () => {
         signOut(auth).then(() => {
         }).catch((error) => {
