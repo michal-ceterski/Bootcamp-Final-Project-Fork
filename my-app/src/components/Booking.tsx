@@ -9,7 +9,8 @@ interface HotelRoom {
 
 interface BookingFormProps {
   userId: number; // Zakładamy, że mamy ID usera zalogowanego
-}
+};
+  // DO ZROBIENIA: na górze aplikacji zrobić context ID i potem wyciągać ID użytkowników React Hookiem
 
 const BookingForm = ({ userId }: BookingFormProps) => {
   const [date, setDate] = useState<string>('');
