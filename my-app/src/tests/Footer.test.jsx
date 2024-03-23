@@ -23,3 +23,5 @@ describe('Footer component', () => {
     expect(getByText('© 2024 Super Hotel. Wszystkie prawa zastrzeżone.')).toBeInTheDocument();
   });
 });
+
+// to jest komentarz
