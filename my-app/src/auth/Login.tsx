@@ -2,7 +2,6 @@ import { signInWithEmailAndPassword } from 'firebase/auth'
 import { Form } from '../components/Form'
 import { auth } from '../api/firebase'
 import { useNavigate } from 'react-router-dom'
-import { createContext } from 'react'
 
 interface HandleSubmitProps {
     login: string;
@@ -25,6 +24,4 @@ return (
         <button className='button_register' onClick={()=> window.location.replace('/register')}>Sign up</button> 
     </div>
     </>
- )}
-
-export const LevelContext = createContext (auth.currentUser);
+ )};
