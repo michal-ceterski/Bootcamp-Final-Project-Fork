@@ -1,8 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+
 const Header = () => {
+
     const navigate = useNavigate();
+
+    const handleLogin = () => {
+        navigate( "/login" );
+    };
+    const navigateToContactForm = () => {
+        navigate( "/contact" );
+    };
     const handleBooking = () => {
         navigate( "/booking" );
     };
@@ -16,8 +25,8 @@ const Header = () => {
             <div className="navigation">
             <button onClick={handleBooking} className="navi_button">Book Now</button>
             <button className="navi_button">Our Rooms</button>
-            <button className="navi_button">Contact Us</button>
-            <button onClick={handleRegister} className="navi_button">Login/Register</button>
+            <button onClick={navigateToContactForm} className="navi_button">Contact Us</button>
+            <button onClick={handleLogin} onClick={handleRegister} className="navi_button">Login/Register</button>
             </div>
         </header>
     );

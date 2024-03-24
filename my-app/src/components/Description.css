@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    padding: 20px;
+}
+
+.add_image {
+    height: 50px;
+    width: 50px;
+    padding: 10px;
+}
+
+.photos_container {
+    display: flex;
+}

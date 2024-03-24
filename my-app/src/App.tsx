@@ -10,20 +10,28 @@ import { Register } from "./auth/Register";
 import { Home } from "./components/Home";
 import Footer from './components/Footer';
 import Gallery from './components/Gallery';
+<<<<<<< HEAD
 import BookingForm from './components/Booking';
+=======
+import ContactForm from './components/ContactForm'
+>>>>>>> main
 
 function App() {
   const [count, setCount] = useState<number>(0)
 
   return (
     <>
-    <Header/>
       <BrowserRouter>
+      <Header/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path='login' element={<Login />}> </Route>
         <Route path='register' element={<Register />}> </Route>
+<<<<<<< HEAD
         <Route path="/booking" element={<BookingForm />} />
+=======
+        <Route path="contact" element={<ContactForm />} />
+>>>>>>> main
       </Routes>
       </BrowserRouter>
       <Gallery>
