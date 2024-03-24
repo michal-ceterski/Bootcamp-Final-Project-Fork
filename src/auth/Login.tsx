@@ -24,4 +24,4 @@ return (
         <button className='button_register' onClick={()=> window.location.replace('/register')}>Sign up</button> 
     </div>
     </>
- )}
+ )};
