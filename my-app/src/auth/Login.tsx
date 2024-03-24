@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 interface HandleSubmitProps {
     login: string;
-    password: String;
+    password: string;
 }
 
 export const Login = () => {
