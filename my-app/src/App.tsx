@@ -10,11 +10,8 @@ import { Register } from "./auth/Register";
 import { Home } from "./components/Home";
 import Footer from './components/Footer';
 import Gallery from './components/Gallery';
-<<<<<<< HEAD
 import BookingForm from './components/Booking';
-=======
 import ContactForm from './components/ContactForm'
->>>>>>> main
 
 function App() {
   const [count, setCount] = useState<number>(0)
