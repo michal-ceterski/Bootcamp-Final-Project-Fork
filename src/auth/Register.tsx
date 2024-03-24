@@ -17,7 +17,7 @@ export const Register = () => {
     }
 return(
     <div className='form.signIn'>
-        <h3>Sign up {auth?.currentUser?.email}</h3>
+        <h3>Sign Up </h3>
         < Form submitText="Sign up" handleSubmit={handleSubmit} />
     </div>
 )}
