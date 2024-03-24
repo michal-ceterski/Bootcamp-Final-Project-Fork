@@ -27,11 +27,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path='login' element={<Login />}> </Route>
         <Route path='register' element={<Register />}> </Route>
-<<<<<<< HEAD
         <Route path="/booking" element={<BookingForm />} />
-=======
         <Route path="contact" element={<ContactForm />} />
->>>>>>> main
       </Routes>
       </BrowserRouter>
       <Gallery>
