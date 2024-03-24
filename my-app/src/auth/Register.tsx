@@ -6,7 +6,7 @@ console.log(auth);
 
 interface HandleSubmitProps {
     login: string;
-    password: String;
+    password: string;
 }
 
 export const Register = () => {
@@ -16,8 +16,8 @@ export const Register = () => {
             .then((e) => console.log(e))
     }
 return(
-    <>
-    <h1>{auth?.currentUser?.email}</h1>
-< Form submitText="Zarejestruj się" handleSubmit={handleSubmit} />
-</>
+    <div className='form.signIn'>
+        <h3>Sign up {auth?.currentUser?.email}</h3>
+        < Form submitText="Sign up" handleSubmit={handleSubmit} />
+    </div>
 )}
