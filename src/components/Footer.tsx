@@ -21,14 +21,14 @@ const Footer = () => {
           </ul>
         </div>
         <div className="footer-section">
-          <h2>Kontakt</h2>
-          <p>Adres: Al. Nieznana 5, 01-100 Tajna Góra, Nibylandia</p>
+          <h2>Contact</h2>
+          <p>Adress: Al. Nieznana 5, 01-100 Tajna Góra, Nibylandia</p>
           <p>Tel: +425 89 123 45 67</p>
           <p>E-mail: info@solhotel.com</p>
         </div>
       </div>
       <div className="footer-bottom">
-        <p>&copy; 2024 Super Hotel. Wszystkie prawa zastrzeżone.</p>
+        <p>&copy; 2024 Sol Hotel. All rights reserved.</p>
       </div>
     </footer>
   );

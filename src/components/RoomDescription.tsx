@@ -48,9 +48,9 @@ const RoomDescription = () => {
                         <h2>{room.room_description}</h2>
                         <div className="info_container">
                         <div>
-                        <div>Rezerwuj od {room.price} zł/noc</div>
-                        <div>Powierzchnia: {room.surface}</div>
-                        <div>Maks. liczba osób: {room.people}</div>
+                        <div>Book for {room.price} $/night</div>
+                        <div>Space: {room.surface}</div>
+                        <div>Max amount of guests: {room.people}</div>
                         </div>
                         </div>
                         </div>

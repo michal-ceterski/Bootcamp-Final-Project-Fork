@@ -4,10 +4,10 @@ import Footer from '../components/Footer';
 
 describe('Footer component', () => {
   test('renders footer with correct content', () => {
-    // Renderowanie komponentu stopki
+    // Rendering of footer component
     const { getByText, getByTestId } = render(<Footer />);
 
-    // Asercja czy zawartość stopki wyświetla się poprawnie
+    // Asserts if footer contenct displays properly
     expect(getByText('Linki')).toBeInTheDocument();
     expect(getByText('Media')).toBeInTheDocument();
     expect(getByText('Kontakt')).toBeInTheDocument();
