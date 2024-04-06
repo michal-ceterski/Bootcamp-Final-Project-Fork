@@ -1,4 +1,14 @@
-const roomdata = [
+export type Room = {
+	id:number, 
+	room:string,
+	room_description: string,
+	price: number,
+	surface: number,
+	people: number,
+	url: string,
+}
+
+const roomdata: Array<Room> = [
 	{
 		"id": 0,
 		"room": "SINGLE ROOM",
