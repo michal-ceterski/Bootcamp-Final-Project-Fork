@@ -2,7 +2,7 @@ import React from "react";
 import roomdata from './RoomData'
 import './Description.css'
 import { useNavigate } from "react-router-dom";
-import { Room } from './RoomData';
+import {Room} from './RoomData';
 
 const RoomDescription = () => {
 
