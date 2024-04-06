@@ -1,7 +1,8 @@
 import React from "react";
-import roomdata from './RoomData.js'
+import roomdata from './RoomData'
 import './Description.css'
 import { useNavigate } from "react-router-dom";
+import { Room } from './RoomData';
 
 const RoomDescription = () => {
 
@@ -37,7 +38,7 @@ const RoomDescription = () => {
         </div>
         </div>
         
-            {roomdata.map((room) => {
+            {roomdata.map((room:Room) => {
                 return (
                     <React.Fragment key={room.id}>
                         <div className="room_container">

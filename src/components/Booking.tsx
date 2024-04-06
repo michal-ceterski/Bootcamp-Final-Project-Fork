@@ -1,38 +1,19 @@
 import { useState, useEffect } from 'react';
 import { useContext } from 'react';
 import { UserContext } from '../auth/UserContext';
-
-interface HotelRoom {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-}
+import roomdata from './RoomData';
+import { Room } from './RoomData';
 
 const BookingForm = () => {
   const [date, setDate] = useState<string>('');
-  const [rooms, setRooms] = useState<HotelRoom[]>([]);
   const [selectedRoom, setSelectedRoom] = useState<number | null>(null);
   const {ID} = useContext(UserContext);
   console.log("text", ID);
 
+// Fetch room data from RoomData.js
+  const [rooms, setRooms] = useState<Room[]>([]);
   useEffect(() => {
-    // Fetchuje dane o pokojach hotelowych z API
-    // !!!Funkcja placebo - podmienić pod właściwy API call!!!
-    const fetchHotelRooms = async () => {
-      try {
-        const response = await fetch('api/hotel-rooms');
-        if (!response.ok) {
-          throw new Error('Failed to fetch hotel rooms');
-        }
-        const data = await response.json();
-        setRooms(data);
-      } catch (error) {
-        console.error('Error fetching hotel rooms:', error);
-      }
-    };
-
-    fetchHotelRooms();
+    setRooms(roomdata);
   }, []);
 
   const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,14 +21,15 @@ const BookingForm = () => {
   };
 
   const handleRoomSelect = (roomId: number) => {
+    console.log(roomId);
     setSelectedRoom(roomId);
   };
 
   const handleBookingSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     if (selectedRoom !== null && date.trim() !== '') {
-      // Wysyła do serwera prośbę o zabukowanie pokoju
-      // Reset formularza
+      // Should send request for room booking to the server
+      // Resets the form
       setDate('');
       setSelectedRoom(null);
     } else {
@@ -57,9 +39,9 @@ const BookingForm = () => {
 
   return (
     <div>
-      <h2>Zarezerwuj pokój</h2>
+      <h2>Book a Room</h2>
       <form onSubmit={handleBookingSubmit}>
-        <label htmlFor="date">Wybierz datę rezerwacji:</label>
+        <label htmlFor="date">Choose Booking Date:</label>
         <input
           type="date"
           id="date"
@@ -67,19 +49,19 @@ const BookingForm = () => {
           onChange={handleDateChange}
           required
         />
-        <label htmlFor="room">Wybierz pokój:</label>
+        <label htmlFor="room">Choose Room:</label>
         <select
           id="room"
           value={selectedRoom || ''}
           onChange={(event) => handleRoomSelect(Number(event.target.value))}
           required
         >
-          <option value="" disabled>Wybierz pokój</option>
+          <option value="" disabled>Choose Room</option>
           {rooms.map(room => (
-            <option key={room.id} value={room.id}>{room.name} - ${room.price}</option>
+            <option key={room.id} value={room.id}>{room.room} - ${room.price}</option>
           ))}
         </select>
-        <button type="submit">Zarezerwuj</button>
+        <button type="submit">Book</button>
       </form>
     </div>
   );
