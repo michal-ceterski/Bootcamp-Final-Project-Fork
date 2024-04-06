@@ -11,4 +11,12 @@
 
 .photos_container {
     display: flex;
+    background-color: #fff;
+}
+
+.hotel_room_image {
+    height: 300px;
+}
+.room_container, .info_container {
+    display: flex;
 }

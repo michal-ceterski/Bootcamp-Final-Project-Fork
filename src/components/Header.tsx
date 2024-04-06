@@ -33,6 +33,9 @@ const Header = () => {
     const handleRegister = () => {
         navigate( "/register" );
     };
+    const handleOurRooms = () => {
+        navigate( "/ourrooms" );
+    };
 
     return (
         <header className="header">
