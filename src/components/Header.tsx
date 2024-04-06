@@ -36,7 +36,10 @@ const Header = () => {
 
     return (
         <header className="header">
+            <div className="logo">
+            <img id="hotel_logo" src="https://firebasestorage.googleapis.com/v0/b/dobra-ekipa-6f3c0.appspot.com/o/logo%2F2.png?alt=media&token=59adcdea-ea81-4400-b9f0-10c042d5fae1" alt="Logo" className="logo" />
             <span className="hotel_name" onClick={()=> window.location.replace('/')}>Sol Hotel</span>
+            </div>
             <div className="navigation">
                 {auth?.currentUser?.email && <button onClick={handleBooking} className="navi_button">Book Now</button>}
                 <button className="navi_button">Our Rooms</button>

@@ -20,10 +20,10 @@ export const Login = () => {
 
 return (
     <>
-    <div className='formSignUp'>
+    <div className="formSignIn">
         <h3>Sign In </h3>
         <Form submitText="Login" handleSubmit={handleSubmit}/>
-        <span>You dont have an account?</span>
+        <span>You don't have an account?</span>
         <button className='button_register' onClick={()=> window.location.replace('/register')}>Sign up</button> 
     </div>
     </>
