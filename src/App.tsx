@@ -42,8 +42,6 @@ function App() {
       </BrowserRouter>
       <Gallery>
       </Gallery>
-      <BookingForm>
-      </BookingForm>
       <Footer/>
     </>
   )
