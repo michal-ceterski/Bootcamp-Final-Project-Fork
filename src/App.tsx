@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { useContext } from 'react';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -16,6 +15,7 @@ import ContactForm from './components/ContactForm';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { auth } from './api/firebase';
 import { UserContext } from './auth/UserContext';
+import RoomDescription from './components/RoomDescription';
 
 function App() {
   const [count, setCount] = useState<number>(0)
@@ -35,6 +35,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path='login' element={<Login />}> </Route>
         <Route path='register' element={<Register />}> </Route>
+        <Route path="ourrooms" element={<RoomDescription />} />
         <Route path="/booking" element={<BookingForm />} />
         <Route path="contact" element={<ContactForm />} />
       </Routes>
