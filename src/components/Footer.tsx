@@ -5,15 +5,15 @@ const Footer = () => {
     <footer>
       <div className="footer-content">
         <div className="footer-section">
-          <h2>Linki</h2>
+          <h2>Links</h2>
           <ul>
-            <li><a href="/">Strona główna</a></li>
-            <li><a href="/about">O nas</a></li>
-            <li><a href="/contact">Kontakt</a></li>
+            <li><a href="/">Main page</a></li>
+            <li><a href="/about">About us</a></li>
+            <li><a href="/contact">Contact us</a></li>
           </ul>
         </div>
         <div className="footer-section">
-          <h2>Media</h2>
+          <h2>Social Media</h2>
           <ul>
             <li><a href="https://tripadvisor.com/">TripAdvisor</a></li>
             <li><a href="https://facebook.com/">Facebook</a></li>
