@@ -8,9 +8,12 @@ import './Header.css';
 import { Login } from "../auth/Login";
 import { Register } from "../auth/Register";
 
+export type HeaderProps = {
+    loginPopupVisible:boolean,
+    setLoginPopupVisible:React.Dispatch<React.SetStateAction<boolean>>
+};
 
-const Header = () => {
-    const [loginPopupVisible, setLoginPopupVisible] = useState(false);
+const Header = ({loginPopupVisible, setLoginPopupVisible}:HeaderProps) => {
     const [registerPopupVisible, setRegisterPopupVisible] = useState(false);
     const navigate = useNavigate();
 
