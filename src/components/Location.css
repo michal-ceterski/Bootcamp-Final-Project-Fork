@@ -1,0 +1,9 @@
+@import "leaflet/dist/leaflet.css";
+
+.location_container {
+    display: flex;
+}
+
+.location_map {
+    height : 500px
+}
