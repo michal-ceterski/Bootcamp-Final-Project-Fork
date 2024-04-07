@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../api/firebase";
-import "./Register.css";
+import "./Login&Register.css";
 
 
 
@@ -58,12 +58,12 @@ export const Register = ({ onClose, onLoginClick  }) => {
                             onChange={handleChange} 
                             required
                         />
+                        <button id="button_action" type="submit" className="submit-btn">Regist</button>
                     </form>
                 </div>
-                <button id="register" type="submit" className="submit-btn">Regist</button>
                 <div className="popup-login-register">
                         <span>You have an account?</span>
-                        <button id="button_login" onClick={handleToggleLogin}>Sign in</button>
+                        <button id="button_referral" onClick={handleToggleLogin}>Sign in</button>
                 </div>
             </div>
         </div>
