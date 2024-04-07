@@ -1,15 +1,21 @@
-import React, {useState} from "react";
+import React, {useState, FormEvent} from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../api/firebase";
 import "./Login&Register.css";
 
-export const Login = ({ onClose, onRegisterClick  }) => {
+
+type Props = {
+    onClose: ()=>void,
+    onRegisterClick: ()=>void
+}
+
+export const Login = ({ onClose, onRegisterClick  }: Props) => {
     const [formData, setFormData] = useState({
         login: "",
         password: "",
     });
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData({
             ...formData,
@@ -17,7 +23,7 @@ export const Login = ({ onClose, onRegisterClick  }) => {
         });
     };  
     
-    const handleSubmit = (e) => {
+    const handleSubmit = (e:FormEvent) => {
         e.preventDefault();
         signInWithEmailAndPassword(auth, formData.login, formData.password)
             .then(() => {

@@ -9,9 +9,12 @@ import { Login } from "../auth/Login";
 import { Register } from "../auth/Register";
 import ContactForm from "./ContactForm";
 
+export type HeaderProps = {
+    loginPopupVisible:boolean,
+    setLoginPopupVisible:React.Dispatch<React.SetStateAction<boolean>>
+};
 
-const Header = () => {
-    const [loginPopupVisible, setLoginPopupVisible] = useState(false);
+const Header = ({loginPopupVisible, setLoginPopupVisible}:HeaderProps) => {
     const [registerPopupVisible, setRegisterPopupVisible] = useState(false);
     const [contactPopupVisible, setContactPopupVisible] = useState(false);
     const navigate = useNavigate();
