@@ -15,9 +15,9 @@ const Footer = () => {
         <div className="footer-section">
           <h2>Social Media</h2>
           <ul>
-            <li><a href="https://tripadvisor.com/">TripAdvisor</a></li>
-            <li><a href="https://facebook.com/">Facebook</a></li>
-            <li><a href="https://instagram.com/">Instagram</a></li>
+            <li><a href="https://tripadvisor.com/" target='_blank'>TripAdvisor</a></li>
+            <li><a href="https://facebook.com/" target='_blank'>Facebook</a></li>
+            <li><a href="https://instagram.com/" target='_blank'>Instagram</a></li>
           </ul>
         </div>
         <div className="footer-section">

@@ -36,10 +36,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="ourrooms" element={<RoomDescription setLoginPopupVisible={setLoginPopupVisible} />} />
         <Route path="/booking" element={<BookingForm />} />
-        <Route path="contact" element={<ContactForm />} />
       </Routes>
-      </BrowserRouter>
       <Footer/>
+      </BrowserRouter>
     </>
   )
 }

@@ -3,9 +3,11 @@ import './ContactForm.css'
 import { collection, addDoc, updateDoc, doc, setDoc } from 'firebase/firestore'
 import { db } from '../api/firebase'
 
+type ContactFormProps = {
+  onClose: ()=>void,
+}
 
-
-const ContactForm = () => {
+const ContactForm = ({onClose}: ContactFormProps) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -24,6 +26,7 @@ const ContactForm = () => {
       state: "CA",
       country: "USA"
     });
+    onClose();
     
     // await fetch('https://dobra-ekipa-6f3c0.web.app', {
     //     method: 'POST',
@@ -44,47 +47,44 @@ const ContactForm = () => {
     // })
    
   };
-
   
   return (
-    <form className="contact-form" onSubmit={handleSubmit}>
-      <div className="form-group">
-        <label htmlFor="name">Name:</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
+    <div className="popup">
+      <div className="popup-content">
+        <button id="close-btn" onClick={onClose}>X</button>
+        <h3>Contact Us</h3>
+        <div className="popup-body">
+            <form onSubmit={handleSubmit}>
+                <input id="input-name"
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
+                <input id="input-name"
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+                <textarea id="input-message"
+                  name="message"
+                  placeholder="Message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                />
+              <button id="button_action" type="submit" className="submit-btn">Submit</button>
+            </form>
+            </div>
       </div>
-      <div className="form-group">
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="message">Message:</label>
-        <textarea
-          id="message"
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <button type="submit" className="submit-btn">Submit</button>
-    </form>
+    </div>
   );
-  
-  ;
 };
+
 
 export default ContactForm;
