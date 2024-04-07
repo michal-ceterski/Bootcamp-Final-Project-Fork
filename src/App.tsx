@@ -37,7 +37,6 @@ function App() {
         <Route path='register' element={<Register />}> </Route>
         <Route path="ourrooms" element={<RoomDescription />} />
         <Route path="/booking" element={<BookingForm />} />
-        <Route path="contact" element={<ContactForm />} />
       </Routes>
       </BrowserRouter>
       <Footer/>

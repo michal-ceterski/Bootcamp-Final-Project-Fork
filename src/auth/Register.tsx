@@ -7,6 +7,7 @@ import "./Login&Register.css";
 
 export const Register = ({ onClose, onLoginClick  }) => {
     const [formData, setFormData] = useState({
+        name: "",
         login: "",
         password: "",
     });
@@ -42,6 +43,14 @@ export const Register = ({ onClose, onLoginClick  }) => {
                 <h3>Sign Up</h3>
                 <div className="popup-body">
                     <form onSubmit={handleSubmit}>
+                        <input id="input-name"
+                            type="text"
+                            name="name"
+                            placeholder="Name" 
+                            value={formData.name}
+                            onChange={handleChange}
+                            required
+                        />
                         <input id="input-login"
                             type="text" 
                             name="login" 
