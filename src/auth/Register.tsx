@@ -26,7 +26,7 @@ export const Register = ({ onClose, onLoginClick  }:Props) => {
         e.preventDefault();
         createUserWithEmailAndPassword(auth, formData.login, formData.password)
             .then(() => {
-                onClose(); // Zamknij popup po zalogowaniu
+                onClose(); // Close popup after log in
             })
             .catch((error) => {
                 console.error("Error during registration:", error);
