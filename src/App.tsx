@@ -5,7 +5,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Header from  './components/Header';
-import { Login} from "./auth/Login";
+import {Login} from "./auth/Login";
 import { Register } from "./auth/Register";
 import { Home } from "./components/Home";
 import Footer from './components/Footer';
@@ -33,8 +33,6 @@ function App() {
       <Header/>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path='login' element={<Login />}> </Route>
-        <Route path='register' element={<Register />}> </Route>
         <Route path="ourrooms" element={<RoomDescription />} />
         <Route path="/booking" element={<BookingForm />} />
         <Route path="contact" element={<ContactForm />} />

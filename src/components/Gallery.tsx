@@ -9,21 +9,21 @@ import ImageGallery from "react-image-gallery";
 const images = [
   {
     original: 'https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/2c/ef/d0.jpg',
-    originalHeight: "500px",
-    originalWidth : "500px",
-    loading: "lazy"
+    originalHeight: 500,
+    originalWidth : 500,
+    loading: "lazy" as const
   },
   {
     original: 'https://static.prsa.pl/images/56f92698-7b84-416d-ae66-344c25d948d2.jpg?format=500',
-    originalHeight: "500px",
-    originalWidth : "500px",
-    loading: "lazy"
+    originalHeight: 500,
+    originalWidth : 500,
+    loading: "lazy" as const
   },
   {
     original: 'https://naukawpolsce.pl/sites/default/files/styles/strona_glowna_slider_750x420/public/202310/46711862_46709856.jpg?itok=oqfQC8-R',
-    originalHeight: "500px",
-    originalWidth : "500px",
-    loading: "lazy"
+    originalHeight: 500,
+    originalWidth : 500,
+    loading: "lazy" as const
   },
 ];
 
