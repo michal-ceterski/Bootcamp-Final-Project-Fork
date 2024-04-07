@@ -22,7 +22,7 @@ export const Form = ({ submitText, isPasswordHidden = false, handleSubmit } : Fo
       </div>
       {!isPasswordHidden && (
         <div>
-          <label htmlFor="password">Haslo</label>
+          <label htmlFor="password">Password</label>
           <input type="password" name="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
         </div>
       )}
