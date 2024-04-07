@@ -1,4 +1,5 @@
 import React from 'react';
+import './Footer.css'
 
 const Footer = () => {
   return (
@@ -23,8 +24,8 @@ const Footer = () => {
         <div className="footer-section">
           <h2>Contact</h2>
           <p>Adress: Al. Nieznana 5, 01-100 Tajna Góra, Nibylandia</p>
-          <p>Tel: +425 89 123 45 67</p>
-          <p>E-mail: info@solhotel.com</p>
+          <p><a className='contact-link' href="tel:+425891234567">+425 89 123 45 67</a></p>
+          <p><a className='contact-link' href="mailto:info@solhotel.com" target='_blank'>info@solhotel.com</a></p>
         </div>
       </div>
       <div className="footer-bottom">
