@@ -5,15 +5,19 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from '../auth/UserContext';
 import {Room} from './RoomData';
 
-const RoomDescription = () => {
+export type RoomDescriptionProps = {
+    setLoginPopupVisible:React.Dispatch<React.SetStateAction<boolean>>
+};
+
+const RoomDescription = ({setLoginPopupVisible}:RoomDescriptionProps) => {
     const navigate = useNavigate();
     const { ID } = useContext(UserContext);
 
     const handleBooking = () => {
         if (ID) {
-        navigate( "/booking" );
+            navigate( "/booking" );
         } else {
-        navigate("/login", { state: { redirect: "/booking" } });
+            setLoginPopupVisible(true)
         }
     };
 
