@@ -36,10 +36,11 @@ export const Login = ({ onClose, onRegisterClick  }) => {
     return (
         <div className="popup">
             <div className="popup-content">
-                <button className="close-btn" onClick={onClose}>X</button>
+                <button id="close-btn" onClick={onClose}>X</button>
                 <h3>Sign In</h3>
+                <div className="popup-body">
                     <form onSubmit={handleSubmit}>
-                        <input 
+                        <input id="input-login" 
                             type="text" 
                             name="login" 
                             placeholder="Login" 
@@ -47,7 +48,7 @@ export const Login = ({ onClose, onRegisterClick  }) => {
                             onChange={handleChange} 
                             required 
                         />
-                        <input 
+                        <input id="input-password"
                             type="password" 
                             name="password" 
                             placeholder="Password" 
@@ -55,10 +56,13 @@ export const Login = ({ onClose, onRegisterClick  }) => {
                             onChange={handleChange} 
                             required
                         />
-                        <button type="submit" className="submit-btn">Login</button>
                     </form>
-                <span>You don't have an account?</span>
-                <button className="button_register" onClick={handleToggleRegister}>Sign up</button>
+                </div>
+                <button id="login" type="submit" className="submit-btn">Login</button>
+                <div className="popup-login-register">
+                        <span>You don't have an account?</span>
+                        <button id="button_register" onClick={handleToggleRegister}>Sign up</button>
+                </div>
             </div>
         </div>
     );

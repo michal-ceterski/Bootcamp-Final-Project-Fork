@@ -5,7 +5,7 @@ import "./Register.css";
 
 
 
-export const Register = ({ onClose  }) => {
+export const Register = ({ onClose, onLoginClick  }) => {
     const [formData, setFormData] = useState({
         login: "",
         password: "",
@@ -30,15 +30,19 @@ export const Register = ({ onClose  }) => {
             });
     };
 
-    
+    const handleToggleLogin= () => {
+        onClose();
+        onLoginClick();
+    };
 
     return (
         <div className="popup">
             <div className="popup-content">
-                <button className="close-btn" onClick={onClose}>X</button>
+                <button id="close-btn" onClick={onClose}>X</button>
                 <h3>Sign Up</h3>
+                <div className="popup-body">
                     <form onSubmit={handleSubmit}>
-                        <input 
+                        <input id="input-login"
                             type="text" 
                             name="login" 
                             placeholder="Login" 
@@ -46,7 +50,7 @@ export const Register = ({ onClose  }) => {
                             onChange={handleChange} 
                             required 
                         />
-                        <input 
+                        <input id="input-password"
                             type="password" 
                             name="password" 
                             placeholder="Password" 
@@ -54,8 +58,13 @@ export const Register = ({ onClose  }) => {
                             onChange={handleChange} 
                             required
                         />
-                        <button type="submit" className="submit-btn">Regist</button>
                     </form>
+                </div>
+                <button id="register" type="submit" className="submit-btn">Regist</button>
+                <div className="popup-login-register">
+                        <span>You have an account?</span>
+                        <button id="button_login" onClick={handleToggleLogin}>Sign in</button>
+                </div>
             </div>
         </div>
     );

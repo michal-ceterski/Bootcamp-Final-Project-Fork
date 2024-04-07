@@ -66,7 +66,7 @@ const Header = () => {
                 {auth?.currentUser?.email && <button onClick={handleSignOut} className="navi_button" style={{backgroundColor: "#2c3f1f", color: "#f1f3ee"}}>Log Out</button>}
             </div>
             {loginPopupVisible && <Login onClose={handleCloseLoginPopup} onRegisterClick={handleRegisterClick} />}
-            {registerPopupVisible && <Register onClose={handleCloseRegisterPopup} />}
+            {registerPopupVisible && <Register onClose={handleCloseRegisterPopup} onLoginClick={handleLoginClick}/>}
         </header>
     );
 }
