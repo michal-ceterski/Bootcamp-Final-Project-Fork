@@ -1,15 +1,2 @@
-.gallery {
-    padding: 20px;
-    background-color: #696262;
-  }
-  
-  .image-list {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .image-list img {
-    width: 300px;
-    height: 200px;
-    margin: 10px;
-  }
+@import "react-image-gallery/styles/css/image-gallery.css";
+

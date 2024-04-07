@@ -40,8 +40,6 @@ function App() {
         <Route path="contact" element={<ContactForm />} />
       </Routes>
       </BrowserRouter>
-      <Gallery>
-      </Gallery>
       <Footer/>
     </>
   )
