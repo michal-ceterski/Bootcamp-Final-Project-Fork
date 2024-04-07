@@ -38,8 +38,8 @@ function App() {
         <Route path="ourrooms" element={<RoomDescription />} />
         <Route path="/booking" element={<BookingForm />} />
       </Routes>
-      </BrowserRouter>
       <Footer/>
+      </BrowserRouter>
     </>
   )
 }
