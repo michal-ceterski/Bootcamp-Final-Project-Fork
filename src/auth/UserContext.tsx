@@ -6,6 +6,11 @@ interface UserContextState {
     setID:(ID:string) => void
 };
 
+interface UserContextState {
+    ID:string,
+    setID:(ID:string) => void
+};
+
 interface UserContextProps {
     children:ReactElement
 };

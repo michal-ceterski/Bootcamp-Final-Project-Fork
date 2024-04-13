@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import roomdata from './RoomData'
 import './Description.css'
 import { useNavigate } from "react-router-dom";
+import { UserContext } from '../auth/UserContext';
 import {Room} from './RoomData';
 
-const RoomDescription = () => {
+export type RoomDescriptionProps = {
+    setLoginPopupVisible:React.Dispatch<React.SetStateAction<boolean>>
+};
 
+const RoomDescription = ({setLoginPopupVisible}:RoomDescriptionProps) => {
     const navigate = useNavigate();
+    const { ID } = useContext(UserContext);
+
     const handleBooking = () => {
-        navigate( "/booking" );
+        if (ID) {
+            navigate( "/booking" );
+        } else {
+            setLoginPopupVisible(true)
+        }
     };
 
     return (
@@ -23,7 +33,7 @@ const RoomDescription = () => {
                 a hairdryer, slippers, and bathrobes. To ensure our guests' best possible rest, all rooms are equipped with 
                 blackout curtains.</div>
             <div>
-            <div>In your room:</div>
+            <div>Among our rooms you will find:</div>
             <div className="photos_container">
                 <img className="add_image" src="https://cdn.pixabay.com/photo/2017/03/05/17/39/wi-fi-2119225_1280.png"/><div>Internet w pokoju</div>
                 <img className="add_image" src="https://image.freepik.com/darmowe-ikony/lodowka_318-10736.jpg"/><div>Lodówka</div>

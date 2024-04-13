@@ -1,15 +1,21 @@
-import React, {useState} from "react";
+import React, {useState, FormEvent} from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../api/firebase";
-import "./Login.css";
+import "./Login&Register.css";
 
-export const Login = ({ onClose, onRegisterClick  }) => {
+
+type Props = {
+    onClose: ()=>void,
+    onRegisterClick: ()=>void
+}
+
+export const Login = ({ onClose, onRegisterClick  }: Props) => {
     const [formData, setFormData] = useState({
         login: "",
         password: "",
     });
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData({
             ...formData,
@@ -17,7 +23,7 @@ export const Login = ({ onClose, onRegisterClick  }) => {
         });
     };  
     
-    const handleSubmit = (e) => {
+    const handleSubmit = (e:FormEvent) => {
         e.preventDefault();
         signInWithEmailAndPassword(auth, formData.login, formData.password)
             .then(() => {
@@ -56,12 +62,12 @@ export const Login = ({ onClose, onRegisterClick  }) => {
                             onChange={handleChange} 
                             required
                         />
+                        <button id="button_action" type="submit" className="submit-btn">Login</button>
                     </form>
                 </div>
-                <button id="login" type="submit" className="submit-btn">Login</button>
                 <div className="popup-login-register">
                         <span>You don't have an account?</span>
-                        <button id="button_register" onClick={handleToggleRegister}>Sign up</button>
+                        <button id="button_referral" onClick={handleToggleRegister}>Sign up</button>
                 </div>
             </div>
         </div>

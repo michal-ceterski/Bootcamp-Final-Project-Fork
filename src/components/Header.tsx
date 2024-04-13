@@ -7,11 +7,16 @@ import { useState } from "react";
 import './Header.css';
 import { Login } from "../auth/Login";
 import { Register } from "../auth/Register";
+import ContactForm from "./ContactForm";
 
+export type HeaderProps = {
+    loginPopupVisible:boolean,
+    setLoginPopupVisible:React.Dispatch<React.SetStateAction<boolean>>
+};
 
-const Header = () => {
-    const [loginPopupVisible, setLoginPopupVisible] = useState(false);
+const Header = ({loginPopupVisible, setLoginPopupVisible}:HeaderProps) => {
     const [registerPopupVisible, setRegisterPopupVisible] = useState(false);
+    const [contactPopupVisible, setContactPopupVisible] = useState(false);
     const navigate = useNavigate();
 
     const handleSignOut = () => {
@@ -41,9 +46,17 @@ const Header = () => {
         setRegisterPopupVisible(true);
     };
 
-    const navigateToContactForm = () => {
-        navigate( "/contact" );
+    const handleCloseContactPopup = () => {
+        setContactPopupVisible(false);
     };
+
+    const handleContactClick = () => {
+        setContactPopupVisible(true);
+    };
+
+    // const navigateToContactForm = () => {
+    //     navigate( "/contact" );
+    // };
     const handleBooking = () => {
         navigate( "/booking" );
     };
@@ -61,12 +74,13 @@ const Header = () => {
             <div className="navigation">
                 {auth?.currentUser?.email && <button onClick={handleBooking} className="navi_button">Book Now</button>}
                 <button onClick={handleOurRooms} className="navi_button">Our Rooms</button>
-                <button onClick={navigateToContactForm} className="navi_button">Contact Us</button>
+                <button onClick={handleContactClick} className="navi_button">Contact Us</button>
                 {!auth?.currentUser?.email &&<button onClick={handleLoginClick} className="navi_button" style={{backgroundColor: "#2c3f1f", color: "#f1f3ee"}}>Login</button>}
                 {auth?.currentUser?.email && <button onClick={handleSignOut} className="navi_button" style={{backgroundColor: "#2c3f1f", color: "#f1f3ee"}}>Log Out</button>}
             </div>
             {loginPopupVisible && <Login onClose={handleCloseLoginPopup} onRegisterClick={handleRegisterClick} />}
             {registerPopupVisible && <Register onClose={handleCloseRegisterPopup} onLoginClick={handleLoginClick}/>}
+            {contactPopupVisible && <ContactForm onClose={handleCloseContactPopup} />}
         </header>
     );
 }

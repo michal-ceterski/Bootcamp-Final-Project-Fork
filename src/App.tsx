@@ -5,7 +5,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Header from  './components/Header';
-import { Login} from "./auth/Login";
+import {Login} from "./auth/Login";
 import { Register } from "./auth/Register";
 import { Home } from "./components/Home";
 import Footer from './components/Footer';
@@ -19,6 +19,7 @@ import RoomDescription from './components/RoomDescription';
 
 function App() {
   const [count, setCount] = useState<number>(0)
+  const [loginPopupVisible, setLoginPopupVisible] = useState(false);
   const {setID}=useContext(UserContext)
   useEffect(() => {
     const unsubscribe=onAuthStateChanged(auth, (user) => {
@@ -30,17 +31,14 @@ function App() {
   return (
     <>
       <BrowserRouter>
-      <Header/>
+      <Header loginPopupVisible={loginPopupVisible} setLoginPopupVisible={setLoginPopupVisible}/>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path='login' element={<Login />}> </Route>
-        <Route path='register' element={<Register />}> </Route>
-        <Route path="ourrooms" element={<RoomDescription />} />
+        <Route path="ourrooms" element={<RoomDescription setLoginPopupVisible={setLoginPopupVisible} />} />
         <Route path="/booking" element={<BookingForm />} />
-        <Route path="contact" element={<ContactForm />} />
       </Routes>
-      </BrowserRouter>
       <Footer/>
+      </BrowserRouter>
     </>
   )
 }
