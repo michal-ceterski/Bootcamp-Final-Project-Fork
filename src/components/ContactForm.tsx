@@ -18,27 +18,22 @@ const ContactForm = ({onClose}: ContactFormProps) => {
   //   alert(`You searched for '${user_name}'`);
   // }
 
-  
-
-    
-  
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+ const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({...formData,[e.target.name]: e.target.value });
   };
   
-  // const handleChange = () =>{
-  
-
   const handleSubmit = async (e: FormEvent) => {
     // const handleChange = () =>{
-    const form = useRef();
-  
-    onClose();
+    
+onClose();
+}
+  const form = useRef();
   const sendEmail = (e: FormEvent) => {
     e.preventDefault();
    
-
+    
+   
     emailjs
     // @ts-ignore
       .sendForm('service_i9svdvj', 'template_x1by15r', form.current, {
@@ -54,19 +49,19 @@ const ContactForm = ({onClose}: ContactFormProps) => {
       );
   
     }
-  }
  
   
   return (
     <div className="popup">
       <div className="popup-content">
-        <button id="close-btn" onClick={onClose}>X</button>
+        <button id="close-btn" onClick={onClose} >X</button>
         <h3>Contact Us</h3>
         <div className="popup-body">
-            <form onSubmit={handleSubmit}>
+        {/* @ts-ignore */}
+            <form ref={form} onSubmit={sendEmail}>
                 <input id="input-name"
                   type="text"
-                  name="name"
+                  name="user_name"
                   placeholder="Name"
                   // value={formData.name}
                   // onChange={handleChange}
@@ -74,7 +69,7 @@ const ContactForm = ({onClose}: ContactFormProps) => {
                 />
                 <input id="input-name"
                   type="email"
-                  name="email"
+                  name="user_email"
                   placeholder="Email"
                   // value={formData.email}
                   // onChange={handleChange}
@@ -87,7 +82,7 @@ const ContactForm = ({onClose}: ContactFormProps) => {
                   // onChange={handleChange}
                   required
                 />
-              <button id="button_action" type="submit" className="submit-btn">Submit</button>
+              <button id="button_action" type="submit" className="submit-btn" value="Send">Submit</button>
             </form>
             </div>
       </div>
