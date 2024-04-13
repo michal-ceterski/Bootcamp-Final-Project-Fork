@@ -23,7 +23,7 @@ const RoomDescription = () => {
                 a hairdryer, slippers, and bathrobes. To ensure our guests' best possible rest, all rooms are equipped with 
                 blackout curtains.</div>
             <div>
-            <div>W naszych pokojach znajdą państwo</div>
+            <div>In your room:</div>
             <div className="photos_container">
                 <img className="add_image" src="https://cdn.pixabay.com/photo/2017/03/05/17/39/wi-fi-2119225_1280.png"/><div>Internet w pokoju</div>
                 <img className="add_image" src="https://image.freepik.com/darmowe-ikony/lodowka_318-10736.jpg"/><div>Lodówka</div>
@@ -44,8 +44,8 @@ const RoomDescription = () => {
                         <div className="room_container">
                         <img className="hotel_room_image" src={room.url}/>
                         <div>
-                        <h1 className="abcde">{room.room}</h1>
-                        <h2>{room.room_description}</h2>
+                        <h1 className="abcde">{room.roomname}</h1>
+                        <h2>{room.roomdescription}</h2>
                         <div className="info_container">
                         <div>
                         <div>Book for {room.price} $/night</div>
