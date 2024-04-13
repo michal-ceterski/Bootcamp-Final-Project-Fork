@@ -71,7 +71,7 @@ const BookingForm = () => {
         >
           <option value="" disabled>Choose Room</option>
           {rooms.map(room => (
-            <option key={room.id} value={room.id}>{room.room} - ${room.price}</option>
+            <option key={room.id} value={room.id}>{room.roomname} - ${room.price}</option>
           ))}
         </select>
         <button type="submit">Book</button>

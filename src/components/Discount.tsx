@@ -1,8 +1,11 @@
 import React from "react";
+import './Discount.css'
 
 const Discount = () => {
     return (
-        <>
+        <div className="discount_container">
+        <img src="https://www.humanproofdesigns.com/wp-content/uploads/2020/12/discount.png"/>
+        <div>
         <div>RECEIVE AN EXTRA 10% DISCOUNT</div>
         <div>Sign up to the newsletter and have all the promos in your inbox the moment they are published.</div>
         <form>
@@ -16,7 +19,8 @@ const Discount = () => {
              shall not affect the lawfulness of processing based on consent before its withdrawal.</label>
              <input type="submit" id="submit" name="submit" value="Submit"/>
         </form>
-        </>
+        </div>
+        </div>
     )
 }
 

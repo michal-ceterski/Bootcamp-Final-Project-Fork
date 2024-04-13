@@ -54,8 +54,8 @@ const RoomDescription = ({setLoginPopupVisible}:RoomDescriptionProps) => {
                         <div className="room_container">
                         <img className="hotel_room_image" src={room.url}/>
                         <div>
-                        <h1 className="abcde">{room.room}</h1>
-                        <h2>{room.room_description}</h2>
+                        <h1 className="abcde">{room.roomname}</h1>
+                        <h2>{room.roomdescription}</h2>
                         <div className="info_container">
                         <div>
                         <div>Book for {room.price} $/night</div>
