@@ -26,10 +26,15 @@ const ContactForm = ({onClose}: ContactFormProps) => {
     const { name, value } = e.target;
     setFormData({...formData,[e.target.name]: e.target.value });
   };
-  onClose();
+  
   // const handleChange = () =>{
-  const form = useRef();
+  
 
+  const handleSubmit = async (e: FormEvent) => {
+    // const handleChange = () =>{
+    const form = useRef();
+  
+    onClose();
   const sendEmail = (e: FormEvent) => {
     e.preventDefault();
    
@@ -49,7 +54,7 @@ const ContactForm = ({onClose}: ContactFormProps) => {
       );
   
     }
-
+  }
  
   
   return (
@@ -63,23 +68,23 @@ const ContactForm = ({onClose}: ContactFormProps) => {
                   type="text"
                   name="name"
                   placeholder="Name"
-                  value={formData.name}
-                  onChange={handleChange}
+                  // value={formData.name}
+                  // onChange={handleChange}
                   required
                 />
                 <input id="input-name"
                   type="email"
                   name="email"
                   placeholder="Email"
-                  value={formData.email}
-                  onChange={handleChange}
+                  // value={formData.email}
+                  // onChange={handleChange}
                   required
                 />
                 <textarea id="input-message"
                   name="message"
                   placeholder="Message"
-                  value={formData.message}
-                  onChange={handleChange}
+                  // value={formData.message}
+                  // onChange={handleChange}
                   required
                 />
               <button id="button_action" type="submit" className="submit-btn">Submit</button>
