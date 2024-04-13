@@ -1,7 +1,6 @@
-import { useState, FormEvent }  from "react"
+import { useState, FormEvent, useRef }  from "react"
 import './ContactForm.css'
-import { collection, addDoc, updateDoc, doc, setDoc } from 'firebase/firestore'
-import { db } from '../api/firebase'
+import emailjs from '@emailjs/browser';
 
 type ContactFormProps = {
   onClose: ()=>void,
@@ -13,40 +12,50 @@ const ContactForm = ({onClose}: ContactFormProps) => {
     email: '',
     message: ''
   });
+// @ts-ignore
+  // function search(formData) {
+  //   const user_name = formData.get("user_name");
+  //   alert(`You searched for '${user_name}'`);
+  // }
+
+  
+
+    
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({...formData,[e.target.name]: e.target.value });
   };
+  
+  // const handleChange = () =>{
+  
 
   const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    console.log(db)
-    await setDoc(doc(db, "cities", "LA"), {
-      name: "Los Angeles",
-      state: "CA",
-      country: "USA"
-    });
+    // const handleChange = () =>{
+    const form = useRef();
+  
     onClose();
-    
-    // await fetch('https://dobra-ekipa-6f3c0.web.app', {
-    //     method: 'POST',
-    //     headers: {'Content-Type': 'application/json'},
-    //     body: JSON.stringify(formData)
-    //   })
-    //   .then((res)=>{
-    //     if(res.ok) {
-    //     alert('Message sent successfully!');
-    //     setFormData({ name: '', email: '', message: '' });
-    //     }
-    //    else {
-    //     alert('Message sending failed.');
-    //   }})
-    //  .catch((err)=>{
-    //   console.log('Error sending message:', err);
-    //   alert('Error sending message.');
-    // })
+  const sendEmail = (e: FormEvent) => {
+    e.preventDefault();
    
-  };
+
+    emailjs
+    // @ts-ignore
+      .sendForm('service_i9svdvj', 'template_x1by15r', form.current, {
+        publicKey: 'nEnmgTagRKnAS2Ayl',
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        },
+      );
+  
+    }
+  }
+ 
   
   return (
     <div className="popup">
@@ -59,23 +68,23 @@ const ContactForm = ({onClose}: ContactFormProps) => {
                   type="text"
                   name="name"
                   placeholder="Name"
-                  value={formData.name}
-                  onChange={handleChange}
+                  // value={formData.name}
+                  // onChange={handleChange}
                   required
                 />
                 <input id="input-name"
                   type="email"
                   name="email"
                   placeholder="Email"
-                  value={formData.email}
-                  onChange={handleChange}
+                  // value={formData.email}
+                  // onChange={handleChange}
                   required
                 />
                 <textarea id="input-message"
                   name="message"
                   placeholder="Message"
-                  value={formData.message}
-                  onChange={handleChange}
+                  // value={formData.message}
+                  // onChange={handleChange}
                   required
                 />
               <button id="button_action" type="submit" className="submit-btn">Submit</button>
