@@ -1,7 +1,6 @@
-import { useState, FormEvent }  from "react"
+import { useState, FormEvent, useRef }  from "react"
 import './ContactForm.css'
-import { collection, addDoc, updateDoc, doc, setDoc } from 'firebase/firestore'
-import { db } from '../api/firebase'
+import emailjs from '@emailjs/browser';
 
 
 
@@ -11,51 +10,56 @@ const ContactForm = () => {
     email: '',
     message: ''
   });
+// @ts-ignore
+  // function search(formData) {
+  //   const user_name = formData.get("user_name");
+  //   alert(`You searched for '${user_name}'`);
+  // }
+
+  
+
+    
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({...formData,[e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    console.log(db)
-    await setDoc(doc(db, "cities", "LA"), {
-      name: "Los Angeles",
-      state: "CA",
-      country: "USA"
-    });
-    
-    // await fetch('https://dobra-ekipa-6f3c0.web.app', {
-    //     method: 'POST',
-    //     headers: {'Content-Type': 'application/json'},
-    //     body: JSON.stringify(formData)
-    //   })
-    //   .then((res)=>{
-    //     if(res.ok) {
-    //     alert('Message sent successfully!');
-    //     setFormData({ name: '', email: '', message: '' });
-    //     }
-    //    else {
-    //     alert('Message sending failed.');
-    //   }})
-    //  .catch((err)=>{
-    //   console.log('Error sending message:', err);
-    //   alert('Error sending message.');
-    // })
-   
-  };
+  // const handleChange = () =>{
+  const form = useRef();
 
+  const sendEmail = (e: FormEvent) => {
+    e.preventDefault();
+   
+
+    emailjs
+    // @ts-ignore
+      .sendForm('service_i9svdvj', 'template_x1by15r', form.current, {
+        publicKey: 'nEnmgTagRKnAS2Ayl',
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        },
+      );
+  
+    }
+
+ 
   
   return (
-    <form className="contact-form" onSubmit={handleSubmit}>
+    // @ts-ignore
+    <form  ref={form} className="contact-form" onSubmit={sendEmail}>
       <div className="form-group">
         <label htmlFor="name">Name:</label>
         <input
           type="text"
           id="name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
+          name="user_name"
+          // onChange={handleChange}
           required
         />
       </div>
@@ -64,9 +68,9 @@ const ContactForm = () => {
         <input
           type="email"
           id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
+          name="user_email"
+
+          // onChange={handleChange}
           required
         />
       </div>
@@ -75,8 +79,7 @@ const ContactForm = () => {
         <textarea
           id="message"
           name="message"
-          value={formData.message}
-          onChange={handleChange}
+          // onChange={handleChange}
           required
         />
       </div>
