@@ -2,9 +2,11 @@ import { useState, FormEvent, useRef }  from "react"
 import './ContactForm.css'
 import emailjs from '@emailjs/browser';
 
+type ContactFormProps = {
+  onClose: ()=>void,
+}
 
-
-const ContactForm = () => {
+const ContactForm = ({onClose}: ContactFormProps) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -24,7 +26,7 @@ const ContactForm = () => {
     const { name, value } = e.target;
     setFormData({...formData,[e.target.name]: e.target.value });
   };
-
+  onClose();
   // const handleChange = () =>{
   const form = useRef();
 
@@ -51,43 +53,42 @@ const ContactForm = () => {
  
   
   return (
-    // @ts-ignore
-    <form  ref={form} className="contact-form" onSubmit={sendEmail}>
-      <div className="form-group">
-        <label htmlFor="name">Name:</label>
-        <input
-          type="text"
-          id="name"
-          name="user_name"
-          // onChange={handleChange}
-          required
-        />
+    <div className="popup">
+      <div className="popup-content">
+        <button id="close-btn" onClick={onClose}>X</button>
+        <h3>Contact Us</h3>
+        <div className="popup-body">
+            <form onSubmit={handleSubmit}>
+                <input id="input-name"
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
+                <input id="input-name"
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+                <textarea id="input-message"
+                  name="message"
+                  placeholder="Message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                />
+              <button id="button_action" type="submit" className="submit-btn">Submit</button>
+            </form>
+            </div>
       </div>
-      <div className="form-group">
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          name="user_email"
-
-          // onChange={handleChange}
-          required
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="message">Message:</label>
-        <textarea
-          id="message"
-          name="message"
-          // onChange={handleChange}
-          required
-        />
-      </div>
-      <button type="submit" className="submit-btn">Submit</button>
-    </form>
+    </div>
   );
-  
-  ;
 };
+
 
 export default ContactForm;

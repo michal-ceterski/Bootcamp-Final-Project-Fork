@@ -19,6 +19,7 @@ import RoomDescription from './components/RoomDescription';
 
 function App() {
   const [count, setCount] = useState<number>(0)
+  const [loginPopupVisible, setLoginPopupVisible] = useState(false);
   const {setID}=useContext(UserContext)
   useEffect(() => {
     const unsubscribe=onAuthStateChanged(auth, (user) => {
@@ -30,15 +31,14 @@ function App() {
   return (
     <>
       <BrowserRouter>
-      <Header/>
+      <Header loginPopupVisible={loginPopupVisible} setLoginPopupVisible={setLoginPopupVisible}/>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="ourrooms" element={<RoomDescription />} />
+        <Route path="ourrooms" element={<RoomDescription setLoginPopupVisible={setLoginPopupVisible} />} />
         <Route path="/booking" element={<BookingForm />} />
-        <Route path="contact" element={<ContactForm />} />
       </Routes>
-      </BrowserRouter>
       <Footer/>
+      </BrowserRouter>
     </>
   )
 }
