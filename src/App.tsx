@@ -16,6 +16,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { auth } from './api/firebase';
 import { UserContext } from './auth/UserContext';
 import RoomDescription from './components/RoomDescription';
+import NotFoundPage from "./components/NotFoundPage";
 
 function App() {
   const [count, setCount] = useState<number>(0)
@@ -36,6 +37,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="ourrooms" element={<RoomDescription setLoginPopupVisible={setLoginPopupVisible} />} />
         <Route path="/booking" element={<BookingForm />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer/>
       </BrowserRouter>
