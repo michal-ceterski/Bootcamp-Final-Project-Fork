@@ -14,8 +14,6 @@ import { UserContext } from './auth/UserContext';
 import RoomDescription from './components/RoomDescription';
 import AboutUs from './components/AboutUs';
 import NotFoundPage from "./components/NotFoundPage";
-import { AuthProvider } from './auth/AuthContext';
-import { ContactProvider } from './components/ContactContext';
 
 function App() {
   const [count, setCount] = useState<number>(0)
@@ -34,8 +32,6 @@ function App() {
  
   return (
     <>
-      <AuthProvider>
-        <ContactProvider>
           <BrowserRouter>
               <Header/>
               <Routes>
@@ -47,8 +43,6 @@ function App() {
               </Routes>
               <Footer/>
           </BrowserRouter>
-        </ContactProvider>
-      </AuthProvider>
     </>
   )
 }

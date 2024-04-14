@@ -33,14 +33,6 @@ const Header = () => {
         });
     };
 
-    // const handleCloseContactPopup = () => {
-    //     setContactPopupVisible(false);          
-    // };
-
-    // const handleContactClick = () => {
-    //     setContactPopupVisible(true);
-    // };
-
     const handleBooking = () => {
         navigate( "/booking" );
     };
