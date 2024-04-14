@@ -17,7 +17,7 @@ export type HeaderProps = {
 const Header = ({loginPopupVisible, setLoginPopupVisible}:HeaderProps) => {
     const [registerPopupVisible, setRegisterPopupVisible] = useState(false);
     const [contactPopupVisible, setContactPopupVisible] = useState(false);
-    const [isEmailSent, setisEmailSent] = useState(true)
+    const [isEmailSent, setisEmailSent] = useState(false)
     const navigate = useNavigate();
 
     const handleSignOut = () => {
