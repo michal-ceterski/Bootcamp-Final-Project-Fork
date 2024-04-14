@@ -24,9 +24,9 @@ const RoomDescription = ({setLoginPopupVisible}:RoomDescriptionProps) => {
     return (
         <>
         <div className="container">
-        <div>SEE OUR COMFORTABLE ROOM</div>
+        <div className="title-text">SEE OUR COMFORTABLE ROOM</div>
         <div>
-            <div>The hotel has 85 rooms, including 74 standard rooms, 6 premium rooms and 5 suites. Our rooms are equipped 
+            <div className="description_text">The hotel has 85 rooms, including 74 standard rooms, 6 premium rooms and 5 suites. Our rooms are equipped 
                 with large, comfortable beds, which ensure a restful night's sleep. Standard facilities include: telephone 
                 with a free wake-up call on demand, LCD satellite TV, free Wi-Fi and tea and coffee making facilities as well 
                 as free mineral water. Bathrooms are equipped with showers or bathtubs. For extra comfort, each bathroom has 
@@ -53,9 +53,9 @@ const RoomDescription = ({setLoginPopupVisible}:RoomDescriptionProps) => {
                     <React.Fragment key={room.id}>
                         <div className="room_container">
                         <img className="hotel_room_image" alt="room-image" src={room.url}/>
-                        <div>
-                        <h1 className="abcde">{room.roomname}</h1>
-                        <h2>{room.roomdescription}</h2>
+                        <div className="room_text_container">
+                        <h2 className="room_description">{room.roomname}</h2>
+                        <p>{room.roomdescription}</p>
                         <div className="info_container">
                         <div>
                         <div>Book for {room.price} $/night</div>
@@ -68,7 +68,7 @@ const RoomDescription = ({setLoginPopupVisible}:RoomDescriptionProps) => {
                     </React.Fragment>
                 )
             })}
-            <button onClick={handleBooking} className="navi_button">Book Now</button>
+            <button onClick={handleBooking} className="navi_button booknow">Book Now</button>
         </>
     );
 }
