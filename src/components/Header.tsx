@@ -59,7 +59,7 @@ const Header = () => {
     const handleBooking = () => {
         navigate( "/booking" );
     };
-   
+
     const handleOurRooms = () => {
         navigate( "/ourrooms" );
     };

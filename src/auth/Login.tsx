@@ -67,7 +67,7 @@ export const Login = ({onClose, onRegisterClick}: Props) => {
                     </form>
                 </div>
                 <div className="popup-login-register">
-                        <span>You don't have an account?</span>
+                        <span id="text_referral">You don't have an account?</span>
                         <button id="button_referral" onClick={handleToggleRegister}>Sign up</button>
                 </div>
             </div>

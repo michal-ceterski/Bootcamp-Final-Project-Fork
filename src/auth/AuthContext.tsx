@@ -3,12 +3,12 @@ import React, { createContext, useContext, useState } from 'react';
 type AuthContextType = {
   loginPopupVisible: boolean;
   setLoginPopupVisible: (value: boolean) => void;
-  registerPopupVisible: boolean;
-  setRegisterPopupVisible: (value: boolean) => void;
+  registerPopupVisible?: boolean;
+  setRegisterPopupVisible?: (value: boolean) => void;
   openLoginPopup: () => void;
   closeLoginPopup: () => void;
-  openRegisterPopup: () => void;
-  closeRegisterPopup: () => void;
+  openRegisterPopup?: () => void;
+  closeRegisterPopup?: () => void;
 };
 
 // Tworzenie kontekstu
@@ -20,7 +20,29 @@ const AuthContext = createContext <AuthContextType | undefined>(undefined);
   if (!context) {
     throw new Error("useAuth must be used within an AuthProvider");
   }
-  return context;
+
+  const { 
+    loginPopupVisible,
+    registerPopupVisible,
+    openLoginPopup,
+    closeLoginPopup,
+    openRegisterPopup,
+    closeRegisterPopup
+  } = context;
+
+  const defaultFunction = () => {};
+  const safeOpenRegisterPopup = openRegisterPopup || defaultFunction;
+  const safeCloseLoginPopup = closeLoginPopup || defaultFunction;
+  const safeCloseRegisterPopup = closeRegisterPopup || defaultFunction;
+
+  return {
+    loginPopupVisible,
+    registerPopupVisible,
+    openLoginPopup,
+    closeLoginPopup: safeCloseLoginPopup,
+    openRegisterPopup: safeOpenRegisterPopup,
+    closeRegisterPopup: safeCloseRegisterPopup
+  };
 };
 
 // Tworzenie dostawcy kontekstu
@@ -48,7 +70,9 @@ const AuthContext = createContext <AuthContextType | undefined>(undefined);
     <AuthContext.Provider 
         value={{ 
           loginPopupVisible,
+          setLoginPopupVisible,
           registerPopupVisible,
+          setRegisterPopupVisible,
           openLoginPopup,
           closeLoginPopup,
           openRegisterPopup,
