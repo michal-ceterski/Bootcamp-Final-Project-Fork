@@ -1,14 +1,24 @@
-import React from "react";
+import React, { FormEvent } from "react";
 import './Discount.css'
+import { db } from "../api/firebase";
+import { collection, addDoc } from "firebase/firestore";
 
 const Discount = () => {
+
+    const handleSubmit = (e : FormEvent) => {
+        e.preventDefault()
+        const docRef = addDoc(collection(db, "users"), {
+            email: e.target.email.value,
+        });
+    }
+
     return (
         <div className="discount_container">
         <img className="discount-img" src="https://www.humanproofdesigns.com/wp-content/uploads/2020/12/discount.png"/>
         <div className="text-container">
         <div className="discount-title">RECEIVE AN EXTRA 10% DISCOUNT</div>
         <div>Sign up to the newsletter and have all the promos in your inbox the moment they are published.</div>
-        <form>
+        <form onSubmit={handleSubmit}>
              <label htmlFor="email">Enter your Email</label><br></br>
              <input type="email" id="email"  name="email" required/><br></br>
              <input type="checkbox" id="agreed" name="agreed" value="Agreed" required/>
