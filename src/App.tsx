@@ -21,6 +21,7 @@ import NotFoundPage from "./components/NotFoundPage";
 
 function App() {
   const [count, setCount] = useState<number>(0)
+  
   const [loginPopupVisible, setLoginPopupVisible] = useState(false);
   const {setID}=useContext(UserContext)
   useEffect(() => {
@@ -30,6 +31,8 @@ function App() {
     })
     return unsubscribe
   }, [])
+
+ 
   return (
     <>
       <BrowserRouter>
@@ -41,7 +44,9 @@ function App() {
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      
       <Footer/>
+      
       </BrowserRouter>
     </>
   )
