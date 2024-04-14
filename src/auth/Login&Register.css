@@ -68,7 +68,10 @@ h3 {
     margin-left: 10px;
     border-radius: 10px;
     border: #2c3f1f solid 1px;
+}
 
+#text_referral {
+    font-size: 10px;
 }
 
 input[type="text"], #input-name {

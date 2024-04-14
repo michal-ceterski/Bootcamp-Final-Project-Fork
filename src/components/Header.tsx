@@ -8,14 +8,15 @@ import './Header.css';
 import { Login } from "../auth/Login";
 import { Register } from "../auth/Register";
 import ContactForm from "./ContactForm";
+import { useAuth } from "../auth/AuthContext";
 
 export type HeaderProps = {
     loginPopupVisible:boolean,
     setLoginPopupVisible:React.Dispatch<React.SetStateAction<boolean>>
 };
 
-const Header = ({loginPopupVisible, setLoginPopupVisible}:HeaderProps) => {
-    const [registerPopupVisible, setRegisterPopupVisible] = useState(false);
+const Header = () => {
+    const { loginPopupVisible, registerPopupVisible, openLoginPopup, closeLoginPopup, openRegisterPopup, closeRegisterPopup } = useAuth();
     const [contactPopupVisible, setContactPopupVisible] = useState(false);
     const [isEmailSent, setisEmailSent] = useState(false)
     const navigate = useNavigate();
@@ -31,22 +32,6 @@ const Header = ({loginPopupVisible, setLoginPopupVisible}:HeaderProps) => {
         });
     };
 
-    const handleCloseLoginPopup = () => {
-        setLoginPopupVisible(false);
-    };
-
-    const handleLoginClick = () => {
-        setLoginPopupVisible(true);
-    };
-
-    const handleCloseRegisterPopup = () => {
-        setRegisterPopupVisible(false);
-    };
-
-    const handleRegisterClick = () => {
-        setRegisterPopupVisible(true);
-    };
-
     const handleCloseContactPopup = () => {
         setContactPopupVisible(false);          
     };
@@ -55,13 +40,10 @@ const Header = ({loginPopupVisible, setLoginPopupVisible}:HeaderProps) => {
         setContactPopupVisible(true);
     };
 
-    // const navigateToContactForm = () => {
-    //     navigate( "/contact" );
-    // };
     const handleBooking = () => {
         navigate( "/booking" );
     };
-   
+
     const handleOurRooms = () => {
         navigate( "/ourrooms" );
     };
@@ -80,11 +62,11 @@ const Header = ({loginPopupVisible, setLoginPopupVisible}:HeaderProps) => {
                 {auth?.currentUser?.email && <button onClick={handleBooking} className="navi_button">Book Now</button>}
                 <button onClick={handleOurRooms} className="navi_button">Our Rooms</button>
                 <button onClick={handleContactClick} className="navi_button">Contact Us</button>
-                {!auth?.currentUser?.email &&<button onClick={handleLoginClick} className="navi_button" style={{backgroundColor: "#2c3f1f", color: "#f1f3ee"}}>Login</button>}
+                {!auth?.currentUser?.email &&<button onClick={openLoginPopup} className="navi_button" style={{backgroundColor: "#2c3f1f", color: "#f1f3ee"}}>Login</button>}
                 {auth?.currentUser?.email && <button onClick={handleSignOut} className="navi_button" style={{backgroundColor: "#2c3f1f", color: "#f1f3ee"}}>Log Out</button>}
             </div>
-            {loginPopupVisible && <Login onClose={handleCloseLoginPopup} onRegisterClick={handleRegisterClick} />}
-            {registerPopupVisible && <Register onClose={handleCloseRegisterPopup} onLoginClick={handleLoginClick}/>}
+            {loginPopupVisible && <Login onClose={closeLoginPopup} onRegisterClick={openRegisterPopup}/>}
+            {registerPopupVisible && <Register onClose={closeRegisterPopup} onLoginClick={openLoginPopup}/>}
             {/* ts-ignore */}
             {contactPopupVisible && <ContactForm isEmailSent={isEmailSent} setisEmailSent={setisEmailSent} onClose={handleCloseContactPopup} />}
             {isEmailSent && <Toaster iconClass = "fa-solid fa-circle-check" text=' Success! We&#39;ve received your message' isEmailSent={isEmailSent} setisEmailSent={setisEmailSent} /> }
