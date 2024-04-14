@@ -13,10 +13,12 @@ import { auth } from './api/firebase';
 import { UserContext } from './auth/UserContext';
 import RoomDescription from './components/RoomDescription';
 import AboutUs from './components/AboutUs';
+import NotFoundPage from "./components/NotFoundPage";
 import { AuthProvider } from './auth/AuthContext';
 
 function App() {
   const [count, setCount] = useState<number>(0)
+  
   const [loginPopupVisible, setLoginPopupVisible] = useState(false);
   const {setID}=useContext(UserContext)
   
@@ -27,7 +29,8 @@ function App() {
     })
     return unsubscribe
   }, [])
-  
+
+ 
   return (
     <>
       <AuthProvider>
@@ -38,8 +41,11 @@ function App() {
           <Route path="ourrooms" element={<RoomDescription setLoginPopupVisible={setLoginPopupVisible}/>} />
           <Route path="/booking" element={<BookingForm />} />
           <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="*" element={<NotFoundPage />} />
         </Routes>
+      
         <Footer/>
+      
         </BrowserRouter>
       </AuthProvider>
       

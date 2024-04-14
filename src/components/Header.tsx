@@ -2,8 +2,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../api/firebase";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
+import { Toaster } from "./Toaster";
 import './Header.css';
 import { Login } from "../auth/Login";
 import { Register } from "../auth/Register";
@@ -18,6 +18,7 @@ export type HeaderProps = {
 const Header = () => {
     const { loginPopupVisible, registerPopupVisible, openLoginPopup, closeLoginPopup, openRegisterPopup, closeRegisterPopup } = useAuth();
     const [contactPopupVisible, setContactPopupVisible] = useState(false);
+    const [isEmailSent, setisEmailSent] = useState(false)
     const navigate = useNavigate();
 
     const handleSignOut = () => {
@@ -32,7 +33,7 @@ const Header = () => {
     };
 
     const handleCloseContactPopup = () => {
-        setContactPopupVisible(false);
+        setContactPopupVisible(false);          
     };
 
     const handleContactClick = () => {
@@ -46,6 +47,10 @@ const Header = () => {
     const handleOurRooms = () => {
         navigate( "/ourrooms" );
     };
+
+    // useEffect(()=>{
+    //     console.log(isEmailSent)
+    // },[isEmailSent])
 
     return (
         <header className="header">
@@ -62,7 +67,9 @@ const Header = () => {
             </div>
             {loginPopupVisible && <Login onClose={closeLoginPopup} onRegisterClick={openRegisterPopup}/>}
             {registerPopupVisible && <Register onClose={closeRegisterPopup} onLoginClick={openLoginPopup}/>}
-            {contactPopupVisible && <ContactForm onClose={handleCloseContactPopup} />}
+            {/* ts-ignore */}
+            {contactPopupVisible && <ContactForm isEmailSent={isEmailSent} setisEmailSent={setisEmailSent} onClose={handleCloseContactPopup} />}
+            {isEmailSent && <Toaster iconClass = "fa-solid fa-circle-check" text=' Success! We&#39;ve received your message' isEmailSent={isEmailSent} setisEmailSent={setisEmailSent} /> }
         </header>
     );
 }

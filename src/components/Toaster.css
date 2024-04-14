@@ -1,0 +1,25 @@
+.toast {
+    position: fixed;
+    bottom: 50%;
+    top: 50%;
+    right: 50%;
+    left: 50%;
+    z-index: 999;
+    display: flex;
+    align-items: center; 
+    justify-content: space-around;
+    padding: 15px;
+    width: 350px;
+    height: 80px;
+    font-size: 15px;
+    background: #fcfafa;
+    font-weight: 500;
+    box-shadow: 0 0 20px rgb(0,0,0,0.3);
+}
+
+.toast i {
+    margin: 0 10px;
+    font-size: 35px;
+    color: green;
+
+}
