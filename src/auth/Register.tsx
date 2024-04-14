@@ -70,7 +70,7 @@ export const Register = ({ onClose, onLoginClick  }:Props) => {
                             onChange={handleChange} 
                             required
                         />
-                        <button id="button_action" type="submit" className="submit-btn">Regist</button>
+                        <button id="button_action" type="submit" className="submit-btn">Join</button>
                     </form>
                 </div>
                 <div className="popup-login-register">
