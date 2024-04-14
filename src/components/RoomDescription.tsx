@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import roomdata from './RoomData'
 import './Description.css'
 import { useNavigate } from "react-router-dom";
@@ -6,21 +6,25 @@ import { UserContext } from '../auth/UserContext';
 import {Room} from './RoomData';
 import { AuthProvider, useAuth } from "../auth/AuthContext";
 
-export type RoomDescriptionProps = {
-    setLoginPopupVisible: React.Dispatch<React.SetStateAction<boolean>>
-};
-
-const RoomDescription = ({setLoginPopupVisible}:RoomDescriptionProps) => {
+const RoomDescription = () => {
     const navigate = useNavigate();
     const { ID } = useContext(UserContext);
+    const { loginPopupVisible, openLoginPopup, closeLoginPopup } = useAuth();
 
     const handleBooking = () => {
         if (ID) {
             navigate( "/booking" );
         } else {
-            setLoginPopupVisible(true)
+            openLoginPopup();
         }
     };
+
+    useEffect(() => {
+        if (!loginPopupVisible && ID) {
+            navigate("/booking");
+            closeLoginPopup();
+        }
+    }, [loginPopupVisible, ID, closeLoginPopup, navigate]);
 
     return (
         <>
