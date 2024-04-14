@@ -13,7 +13,7 @@ const NotFoundPage = () => {
     return (
       <div>
         <h1>404 - Page Not Found</h1>
-        <img src="https://media.tenor.com/eD6ODXgpFdsAAAAi/wat.gif" alt="404 GIF" />
+        <img src="https://media.tenor.com/eD6ODXgpFdsAAAAi/wat.gif" alt="404-GIF" />
         <p>Confused? We are too.</p>
         <p>You can go back to the <Link to="/">homepage</Link> to get back on track.</p>
       </div>
