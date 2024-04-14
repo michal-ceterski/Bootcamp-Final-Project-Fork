@@ -55,9 +55,9 @@ export const Register = ({ onClose, onLoginClick  }:Props) => {
                             required
                         />
                         <input id="input-login"
-                            type="text" 
+                            type="email" 
                             name="login" 
-                            placeholder="Login" 
+                            placeholder="Email" 
                             value={formData.login} 
                             onChange={handleChange} 
                             required 
