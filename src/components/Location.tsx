@@ -12,15 +12,13 @@ const Location = () => {
 
     return (
         <div className="location_container">
-            <div>
             <h2>Hotel Sol</h2>
-            <div>The building, whose architecture refers to the style of a 
+            <div className="text_container">The building, whose architecture refers to the style of a 
                 seaside villa, is located on the main communication route 
                 of the Tri-City, and at the same time right next to the 
                 Aquapark and only 250 m from the sandy beach. The hotel 
                 has 50 rooms. On its premises there is the Aquarella 
                 Restaurant, serving European cuisine and 3 conference rooms.</div>
-            </div>
             <MapContainer center={[latitude, longitude]} zoom={13} ref={mapRef} style={{height: "500px", width: "1000px"}}>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -32,7 +30,6 @@ const Location = () => {
                 </Popup>
                 </Marker>
             </MapContainer>
-  );
         </div>
     )
 }

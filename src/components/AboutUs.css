@@ -1,0 +1,22 @@
+.box-container {
+    display: flex;
+    border: 2px solid;
+    padding: 30px;
+    border-radius: 50px;
+    margin: 30px
+}
+
+.value-img {
+    height: 400px;
+    margin: 0 30px
+}
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+p, span {
+    font-size: 20px;
+}

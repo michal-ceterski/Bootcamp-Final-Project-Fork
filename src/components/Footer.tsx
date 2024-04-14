@@ -9,7 +9,7 @@ const Footer = () => {
           <h2>Links</h2>
           <ul>
             <li><a href="/">Main page</a></li>
-            <li><a href="/about">About us</a></li>
+            <li><a href="/aboutus">About us</a></li>
             <li><a href="/contact">Contact us</a></li>
           </ul>
         </div>

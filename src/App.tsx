@@ -16,6 +16,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { auth } from './api/firebase';
 import { UserContext } from './auth/UserContext';
 import RoomDescription from './components/RoomDescription';
+import AboutUs from './components/AboutUs';
 
 function App() {
   const [count, setCount] = useState<number>(0)
@@ -34,8 +35,9 @@ function App() {
       <Header loginPopupVisible={loginPopupVisible} setLoginPopupVisible={setLoginPopupVisible}/>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="ourrooms" element={<RoomDescription setLoginPopupVisible={setLoginPopupVisible} />} />
+        <Route path="/ourrooms" element={<RoomDescription setLoginPopupVisible={setLoginPopupVisible} />} />
         <Route path="/booking" element={<BookingForm />} />
+        <Route path="/aboutus" element={<AboutUs />} />
       </Routes>
       <Footer/>
       </BrowserRouter>

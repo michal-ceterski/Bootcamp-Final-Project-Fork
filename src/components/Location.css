@@ -1,9 +1,17 @@
 @import "leaflet/dist/leaflet.css";
 
-.location_container {
-    display: flex;
-}
-
 .location_map {
     height : 500px
+}
+
+.location_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px;
+    padding : 30px;
+}
+
+.text_container {
+    padding-bottom: 30px;
 }
