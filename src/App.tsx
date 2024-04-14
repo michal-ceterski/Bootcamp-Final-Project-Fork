@@ -15,20 +15,26 @@ import RoomDescription from './components/RoomDescription';
 import AboutUs from './components/AboutUs';
 import NotFoundPage from "./components/NotFoundPage";
 import { AuthProvider } from './auth/AuthContext';
+import { Navigate } from 'react-router-dom';
 
 function App() {
   const [count, setCount] = useState<number>(0)
-  
+  const [loggedIn, setLoggedIn] = useState<boolean>(false);
   const [loginPopupVisible, setLoginPopupVisible] = useState(false);
   const {setID}=useContext(UserContext)
   
   useEffect(() => {
-    const unsubscribe=onAuthStateChanged(auth, (user) => {
-      if(user){const ID=user.uid
-      setID(ID)}
-    })
-    return unsubscribe
-  }, [])
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const ID = user.uid;
+        setID(ID);
+        setLoggedIn(true);
+      } else {
+        setLoggedIn(false);
+      }
+    });
+    return unsubscribe;
+  }, []);
 
  
   return (
@@ -39,7 +45,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="ourrooms" element={<RoomDescription setLoginPopupVisible={setLoginPopupVisible}/>} />
-          <Route path="/booking" element={<BookingForm />} />
+          <Route path="/booking" element={loggedIn ? (<BookingForm />) : ( <Navigate replace to={"/"}/>)} />
           <Route path="/aboutus" element={<AboutUs />} />
         <Route path="*" element={<NotFoundPage />} />
         </Routes>

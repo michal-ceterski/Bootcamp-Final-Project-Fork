@@ -14,6 +14,7 @@ const BookingForm = () => {
   const [rooms, setRooms] = useState<Room[]>([]);
   useEffect(() => {
     setRooms(roomdata);
+    console.log(ID);
   }, []);
 
   const handleStartDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
