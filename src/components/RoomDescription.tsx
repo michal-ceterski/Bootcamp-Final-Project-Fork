@@ -4,9 +4,10 @@ import './Description.css'
 import { useNavigate } from "react-router-dom";
 import { UserContext } from '../auth/UserContext';
 import {Room} from './RoomData';
+import { AuthProvider, useAuth } from "../auth/AuthContext";
 
 export type RoomDescriptionProps = {
-    setLoginPopupVisible:React.Dispatch<React.SetStateAction<boolean>>
+    setLoginPopupVisible: React.Dispatch<React.SetStateAction<boolean>>
 };
 
 const RoomDescription = ({setLoginPopupVisible}:RoomDescriptionProps) => {

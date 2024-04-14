@@ -16,11 +16,13 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { auth } from './api/firebase';
 import { UserContext } from './auth/UserContext';
 import RoomDescription from './components/RoomDescription';
+import { AuthProvider } from './auth/AuthContext';
 
 function App() {
   const [count, setCount] = useState<number>(0)
   const [loginPopupVisible, setLoginPopupVisible] = useState(false);
   const {setID}=useContext(UserContext)
+  
   useEffect(() => {
     const unsubscribe=onAuthStateChanged(auth, (user) => {
       if(user){const ID=user.uid
@@ -28,17 +30,21 @@ function App() {
     })
     return unsubscribe
   }, [])
+  
   return (
     <>
-      <BrowserRouter>
-      <Header loginPopupVisible={loginPopupVisible} setLoginPopupVisible={setLoginPopupVisible}/>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="ourrooms" element={<RoomDescription setLoginPopupVisible={setLoginPopupVisible} />} />
-        <Route path="/booking" element={<BookingForm />} />
-      </Routes>
-      <Footer/>
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+        <Header/>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="ourrooms" element={<RoomDescription setLoginPopupVisible={setLoginPopupVisible}/>} />
+          <Route path="/booking" element={<BookingForm />} />
+        </Routes>
+        <Footer/>
+        </BrowserRouter>
+      </AuthProvider>
+      
     </>
   )
 }

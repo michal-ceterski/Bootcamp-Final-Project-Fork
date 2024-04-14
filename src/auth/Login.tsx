@@ -2,6 +2,7 @@ import React, {useState, FormEvent} from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../api/firebase";
 import "./Login&Register.css";
+import { useAuth } from "./AuthContext";
 
 
 type Props = {
@@ -9,7 +10,7 @@ type Props = {
     onRegisterClick: ()=>void
 }
 
-export const Login = ({ onClose, onRegisterClick  }: Props) => {
+export const Login = ({onClose, onRegisterClick}: Props) => {
     const [formData, setFormData] = useState({
         login: "",
         password: "",
