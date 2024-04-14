@@ -4,7 +4,7 @@ import './Discount.css'
 const Discount = () => {
     return (
         <div className="discount_container">
-        <img className="discount-img" src="https://www.humanproofdesigns.com/wp-content/uploads/2020/12/discount.png"/>
+        <img className="discount-img" src="https://www.humanproofdesigns.com/wp-content/uploads/2020/12/discount.png" alt="discount image"/>
         <div className="text-container">
         <div className="discount-title">RECEIVE AN EXTRA 10% DISCOUNT</div>
         <div>Sign up to the newsletter and have all the promos in your inbox the moment they are published.</div>

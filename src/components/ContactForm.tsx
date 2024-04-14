@@ -67,7 +67,7 @@ onClose();
                   // onChange={handleChange}
                   required
                 />
-                <input id="input-name"
+                <input id="input-email"
                   type="email"
                   name="user_email"
                   placeholder="Email"
