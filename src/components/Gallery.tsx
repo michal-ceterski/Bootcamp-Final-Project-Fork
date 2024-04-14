@@ -12,21 +12,21 @@ const images = [
     originalHeight: 300,
     originalWidth : 300,
     loading: "lazy" as const,
-    alt: "First placeholder image in gallery"
+    originalAlt: "First placeholder image in gallery"
   },
   {
     original: 'https://static.prsa.pl/images/56f92698-7b84-416d-ae66-344c25d948d2.jpg?format=500',
     originalHeight: 300,
     originalWidth : 300,
     loading: "lazy" as const,
-    alt: "Second placeholder image in gallery"
+    originalAlt: "Second placeholder image in gallery"
   },
   {
     original: 'https://naukawpolsce.pl/sites/default/files/styles/strona_glowna_slider_750x420/public/202310/46711862_46709856.jpg?itok=oqfQC8-R',
     originalHeight: 300,
     originalWidth : 300,
     loading: "lazy" as const,
-    alt: "Third placeholder image gallery"
+    originalAlt: "Third placeholder image gallery"
   },
 ];
 
