@@ -8,7 +8,7 @@ import './Header.css';
 import { Login } from "../auth/Login";
 import { Register } from "../auth/Register";
 import ContactForm from "./ContactForm";
-import { AuthProvider, useAuth } from "../auth/AuthContext";
+import { useAuth } from "../auth/AuthContext";
 
 export type HeaderProps = {
     loginPopupVisible:boolean,
@@ -30,23 +30,6 @@ const Header = () => {
         console.error('Error during logout:', error);
         });
     };
-
-    // const handleCloseLoginPopup = () => {
-    //     setLoginPopupVisible(false);
-    // };
-
-    // const handleLoginClick = () => {
-    //     setLoginPopupVisible(true);
-    // };
-
-    // const handleCloseRegisterPopup = () => {
-    //     setRegisterPopupVisible(false);
-    // };
-
-    // const handleRegisterClick = () => {
-    //     setRegisterPopupVisible(true);
-    //     setLoginVisible(false);
-    // };
 
     const handleCloseContactPopup = () => {
         setContactPopupVisible(false);

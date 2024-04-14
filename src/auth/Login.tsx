@@ -2,7 +2,6 @@ import React, {useState, FormEvent} from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../api/firebase";
 import "./Login&Register.css";
-import { useAuth } from "./AuthContext";
 
 
 type Props = {
