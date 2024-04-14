@@ -16,6 +16,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { auth } from './api/firebase';
 import { UserContext } from './auth/UserContext';
 import RoomDescription from './components/RoomDescription';
+import AboutUs from './components/AboutUs';
 import { AuthProvider } from './auth/AuthContext';
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="ourrooms" element={<RoomDescription setLoginPopupVisible={setLoginPopupVisible}/>} />
           <Route path="/booking" element={<BookingForm />} />
+          <Route path="/aboutus" element={<AboutUs />} />
         </Routes>
         <Footer/>
         </BrowserRouter>

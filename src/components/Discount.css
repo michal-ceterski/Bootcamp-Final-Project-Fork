@@ -1,3 +1,21 @@
 .discount_container {
     display: flex;
+    margin: 50px;
+    padding: 30px;
+    border: 1px solid;
+    border-radius: 30px;
+}
+
+.discount-img {
+    height: 200px;
+}
+
+input[type="submit"] {
+    padding: 5px;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.discount-title {
+    font-weight: bold;;
 }
