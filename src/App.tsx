@@ -15,6 +15,7 @@ import RoomDescription from './components/RoomDescription';
 import AboutUs from './components/AboutUs';
 import NotFoundPage from "./components/NotFoundPage";
 import { AuthProvider } from './auth/AuthContext';
+import { ContactProvider } from './components/ContactContext';
 
 function App() {
   const [count, setCount] = useState<number>(0)
@@ -34,21 +35,20 @@ function App() {
   return (
     <>
       <AuthProvider>
-        <BrowserRouter>
-        <Header/>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="ourrooms" element={<RoomDescription setLoginPopupVisible={setLoginPopupVisible}/>} />
-          <Route path="/booking" element={<BookingForm />} />
-          <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      
-        <Footer/>
-      
-        </BrowserRouter>
+        <ContactProvider>
+          <BrowserRouter>
+              <Header/>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="ourrooms" element={<RoomDescription setLoginPopupVisible={setLoginPopupVisible}/>} />
+                <Route path="/booking" element={<BookingForm />} />
+                <Route path="/aboutus" element={<AboutUs />} />
+              <Route path="*" element={<NotFoundPage />} />
+              </Routes>
+              <Footer/>
+          </BrowserRouter>
+        </ContactProvider>
       </AuthProvider>
-      
     </>
   )
 }

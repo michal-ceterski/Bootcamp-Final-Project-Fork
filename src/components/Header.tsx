@@ -9,6 +9,7 @@ import { Login } from "../auth/Login";
 import { Register } from "../auth/Register";
 import ContactForm from "./ContactForm";
 import { useAuth } from "../auth/AuthContext";
+import { useContact } from "./ContactContext";
 
 export type HeaderProps = {
     loginPopupVisible:boolean,
@@ -17,7 +18,7 @@ export type HeaderProps = {
 
 const Header = () => {
     const { loginPopupVisible, registerPopupVisible, openLoginPopup, closeLoginPopup, openRegisterPopup, closeRegisterPopup } = useAuth();
-    const [contactPopupVisible, setContactPopupVisible] = useState(false);
+    const { contactPopupVisible, openContactPopup, closeContactPopup } = useContact();
     const [isEmailSent, setisEmailSent] = useState(false)
     const navigate = useNavigate();
 
@@ -32,13 +33,13 @@ const Header = () => {
         });
     };
 
-    const handleCloseContactPopup = () => {
-        setContactPopupVisible(false);          
-    };
+    // const handleCloseContactPopup = () => {
+    //     setContactPopupVisible(false);          
+    // };
 
-    const handleContactClick = () => {
-        setContactPopupVisible(true);
-    };
+    // const handleContactClick = () => {
+    //     setContactPopupVisible(true);
+    // };
 
     const handleBooking = () => {
         navigate( "/booking" );
@@ -61,14 +62,14 @@ const Header = () => {
             <div className="navigation">
                 {auth?.currentUser?.email && <button onClick={handleBooking} className="navi_button">Book Now</button>}
                 <button onClick={handleOurRooms} className="navi_button">Our Rooms</button>
-                <button onClick={handleContactClick} className="navi_button">Contact Us</button>
+                <button onClick={openContactPopup} className="navi_button">Contact Us</button>
                 {!auth?.currentUser?.email &&<button onClick={openLoginPopup} className="navi_button" style={{backgroundColor: "#2c3f1f", color: "#f1f3ee"}}>Login</button>}
                 {auth?.currentUser?.email && <button onClick={handleSignOut} className="navi_button" style={{backgroundColor: "#2c3f1f", color: "#f1f3ee"}}>Log Out</button>}
             </div>
             {loginPopupVisible && <Login onClose={closeLoginPopup} onRegisterClick={openRegisterPopup}/>}
             {registerPopupVisible && <Register onClose={closeRegisterPopup} onLoginClick={openLoginPopup}/>}
             {/* ts-ignore */}
-            {contactPopupVisible && <ContactForm isEmailSent={isEmailSent} setisEmailSent={setisEmailSent} onClose={handleCloseContactPopup} />}
+            {contactPopupVisible && <ContactForm isEmailSent={isEmailSent} setisEmailSent={setisEmailSent} onClose={closeContactPopup} />}
             {isEmailSent && <Toaster iconClass = "fa-solid fa-circle-check" text=' Success! We&#39;ve received your message' isEmailSent={isEmailSent} setisEmailSent={setisEmailSent} /> }
         </header>
     );
