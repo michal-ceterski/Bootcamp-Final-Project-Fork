@@ -63,23 +63,17 @@ const ContactForm = ({onClose, setisEmailSent, isEmailSent}: ContactFormProps) =
                   type="text"
                   name="user_name"
                   placeholder="Name"
-                  value={formData.name}
-                  onChange={handleChange}
                   required
                 />
                 <input id="input-email"
                   type="email"
                   name="user_email"
                   placeholder="Email"
-                  value={formData.email}
-                  onChange={handleChange}
                   required
                 />
                 <textarea id="input-message"
                   name="message"
                   placeholder="Message"
-                  value={formData.message}
-                  onChange={handleChange}
                   required
                 />
               <button id="button_action" type="submit" className="submit-btn" value="Send">Submit</button>
