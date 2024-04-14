@@ -2,8 +2,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../api/firebase";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
+import { Toaster } from "./Toaster";
 import './Header.css';
 import { Login } from "../auth/Login";
 import { Register } from "../auth/Register";
@@ -17,6 +17,7 @@ export type HeaderProps = {
 const Header = ({loginPopupVisible, setLoginPopupVisible}:HeaderProps) => {
     const [registerPopupVisible, setRegisterPopupVisible] = useState(false);
     const [contactPopupVisible, setContactPopupVisible] = useState(false);
+    const [isEmailSent, setisEmailSent] = useState(true)
     const navigate = useNavigate();
 
     const handleSignOut = () => {
@@ -47,7 +48,7 @@ const Header = ({loginPopupVisible, setLoginPopupVisible}:HeaderProps) => {
     };
 
     const handleCloseContactPopup = () => {
-        setContactPopupVisible(false);
+        setContactPopupVisible(false);          
     };
 
     const handleContactClick = () => {
@@ -65,6 +66,10 @@ const Header = ({loginPopupVisible, setLoginPopupVisible}:HeaderProps) => {
         navigate( "/ourrooms" );
     };
 
+    // useEffect(()=>{
+    //     console.log(isEmailSent)
+    // },[isEmailSent])
+
     return (
         <header className="header">
             <div className="logo">
@@ -80,7 +85,9 @@ const Header = ({loginPopupVisible, setLoginPopupVisible}:HeaderProps) => {
             </div>
             {loginPopupVisible && <Login onClose={handleCloseLoginPopup} onRegisterClick={handleRegisterClick} />}
             {registerPopupVisible && <Register onClose={handleCloseRegisterPopup} onLoginClick={handleLoginClick}/>}
-            {contactPopupVisible && <ContactForm onClose={handleCloseContactPopup} />}
+            {/* ts-ignore */}
+            {contactPopupVisible && <ContactForm isEmailSent={isEmailSent} setisEmailSent={setisEmailSent} onClose={handleCloseContactPopup} />}
+            {isEmailSent && <Toaster iconClass = "fa-solid fa-circle-check" text=' Success! We&#39;ve received your message' isEmailSent={isEmailSent} setisEmailSent={setisEmailSent} /> }
         </header>
     );
 }

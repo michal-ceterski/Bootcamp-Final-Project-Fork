@@ -1,22 +1,20 @@
-import { useState, FormEvent, useRef }  from "react"
+import { useState, FormEvent, useRef, useEffect, MutableRefObject }  from "react"
 import './ContactForm.css'
 import emailjs from '@emailjs/browser';
 
 type ContactFormProps = {
   onClose: ()=>void,
+  isEmailSent: boolean,
+  setisEmailSent: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const ContactForm = ({onClose}: ContactFormProps) => {
+const ContactForm = ({onClose, setisEmailSent, isEmailSent}: ContactFormProps) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   });
-// @ts-ignore
-  // function search(formData) {
-  //   const user_name = formData.get("user_name");
-  //   alert(`You searched for '${user_name}'`);
-  // }
+  
 
  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -24,62 +22,58 @@ const ContactForm = ({onClose}: ContactFormProps) => {
   };
   
   const handleSubmit = async (e: FormEvent) => {
-    // const handleChange = () =>{
-    
-onClose();
+
 }
-  const form = useRef();
+  const form = useRef<HTMLFormElement>(null);
+ 
   const sendEmail = (e: FormEvent) => {
     e.preventDefault();
-   
     
-   
     emailjs
-    // @ts-ignore
       .sendForm('service_i9svdvj', 'template_x1by15r', form.current, {
         publicKey: 'nEnmgTagRKnAS2Ayl',
       })
       .then(
         () => {
           console.log('SUCCESS!');
-        },
+          setisEmailSent(true);
+          
+          },
         (error) => {
           console.log('FAILED...', error.text);
         },
-      );
+      )
+    
+      onClose();
   
     }
+
  
-  
+
   return (
+    
+    <>
     <div className="popup">
       <div className="popup-content">
         <button id="close-btn" onClick={onClose} >X</button>
         <h3>Contact Us</h3>
         <div className="popup-body">
-        {/* @ts-ignore */}
             <form ref={form} onSubmit={sendEmail}>
                 <input id="input-name"
                   type="text"
                   name="user_name"
                   placeholder="Name"
-                  // value={formData.name}
-                  // onChange={handleChange}
                   required
                 />
                 <input id="input-name"
                   type="email"
                   name="user_email"
                   placeholder="Email"
-                  // value={formData.email}
-                  // onChange={handleChange}
                   required
                 />
                 <textarea id="input-message"
                   name="message"
                   placeholder="Message"
-                  // value={formData.message}
-                  // onChange={handleChange}
                   required
                 />
               <button id="button_action" type="submit" className="submit-btn" value="Send">Submit</button>
@@ -87,6 +81,8 @@ onClose();
             </div>
       </div>
     </div>
+    
+    </>
   );
 };
 
