@@ -3,16 +3,16 @@ import './Toaster.css'
 
 type Toasterprops = {
     text: string,
-    setisEmailSent: React.Dispatch<React.SetStateAction<boolean>>,
-    isEmailSent: boolean,
+    setisFormSubmitted: React.Dispatch<React.SetStateAction<boolean>>,
+    isFormSubmitted: boolean,
     iconClass: string
 }
 
 
-export const Toaster = ({iconClass, text, setisEmailSent,isEmailSent}: Toasterprops )=>{
+export const Toaster = ({iconClass, text, setisFormSubmitted,isFormSubmitted}: Toasterprops )=>{
 
     useEffect(()=> {
-    setTimeout(()=>setisEmailSent(false), 3000)},[])
+    setTimeout(()=>setisFormSubmitted(false), 3000)},[])
 
     return (
         <>

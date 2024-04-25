@@ -2,13 +2,14 @@ import { useState, FormEvent, useRef, useEffect, MutableRefObject }  from "react
 import './ContactForm.css'
 import emailjs from '@emailjs/browser';
 
+
 type ContactFormProps = {
   onClose: ()=>void,
-  isEmailSent: boolean,
-  setisEmailSent: React.Dispatch<React.SetStateAction<boolean>>
+  isFormSubmitted: boolean,
+  setisFormSubmitted: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const ContactForm = ({onClose, setisEmailSent, isEmailSent}: ContactFormProps) => {
+const ContactForm = ({onClose, setisFormSubmitted, isFormSubmitted}: ContactFormProps) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -36,7 +37,7 @@ const ContactForm = ({onClose, setisEmailSent, isEmailSent}: ContactFormProps) =
       .then(
         () => {
           console.log('SUCCESS!');
-          setisEmailSent(true);
+          setisFormSubmitted(true);
           
           },
         (error) => {
