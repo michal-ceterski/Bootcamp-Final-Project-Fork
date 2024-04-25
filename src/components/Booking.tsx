@@ -1,10 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useContext } from 'react';
 import { UserContext } from '../auth/UserContext';
 import roomdata from './RoomData';
 import { Room } from './RoomData';
+import { auth } from "../api/firebase";
+import emailjs from '@emailjs/browser';
 
-const BookingForm = () => {
+type ContactFormProps = {
+  isFormSubmitted: boolean,
+  setisFormSubmitted: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const BookingForm = ({setisFormSubmitted, isFormSubmitted}:ContactFormProps) => {
   const [startDate, setStartDate] = useState<string>('');
   const [endDate, setEndDate] = useState<string>('');
   const [selectedRoom, setSelectedRoom] = useState<number | null>(null);
@@ -15,6 +22,7 @@ const BookingForm = () => {
   useEffect(() => {
     setRooms(roomdata);
     console.log(ID);
+    console.log(auth)
   }, []);
 
   const handleStartDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,10 +38,27 @@ const BookingForm = () => {
     setSelectedRoom(roomId);
   };
 
+  const form = useRef<HTMLFormElement>(null);
+
   const handleBookingSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     if (selectedRoom !== null && startDate.trim() !== '' && endDate.trim() !== '') {
       // Should send request for room booking to the server
+      //Sends email with booking confirmation to the user
+      emailjs
+      .sendForm('service_i9svdvj', 'template_ihq485e', form.current, {
+        publicKey: 'nEnmgTagRKnAS2Ayl',
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+          setisFormSubmitted(true);
+          
+          },
+        (error) => {
+          console.log('FAILED...', error.text);
+        },
+      )
       // Resets the form
       setStartDate('');
       setEndDate('');
@@ -46,11 +71,13 @@ const BookingForm = () => {
   return (
     <div>
       <h2>Book a Room</h2>
-      <form onSubmit={handleBookingSubmit}>
+      <form ref={form} onSubmit={handleBookingSubmit}>
+        <input type='hidden' name='user_email' value={auth?.currentUser?.email}/>
         <label htmlFor="start-date">Choose Start Date:</label>
         <input
           type="date"
           id="start-date"
+          name="start-date"
           value={startDate}
           onChange={handleStartDateChange}
           required
@@ -59,6 +86,7 @@ const BookingForm = () => {
         <input
           type="date"
           id="end-date"
+          name="end-date"
           value={endDate}
           onChange={handleEndDateChange}
           required
@@ -66,6 +94,7 @@ const BookingForm = () => {
         <label htmlFor="room">Choose Room:</label>
         <select
           id="room"
+          name="room"
           value={selectedRoom || ''}
           onChange={(event) => handleRoomSelect(Number(event.target.value))}
           required
