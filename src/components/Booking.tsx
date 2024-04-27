@@ -5,6 +5,8 @@ import { auth } from "../api/firebase";
 import emailjs from '@emailjs/browser';
 import { useTranslation } from "react-i18next"
 import { useContact } from './ContactContext';
+import { db } from '../api/firebase';
+import { setDoc, doc, getDoc} from 'firebase/firestore';
 
 type ContactFormProps = {
   isFormSubmitted: boolean,
@@ -17,13 +19,20 @@ const BookingForm = ({setisFormSubmitted, isFormSubmitted}:ContactFormProps) => 
   const [selectedRoom, setSelectedRoom] = useState<number | null>(null);
   const { ID } = useContext(UserContext);
   const {t} =useTranslation()
-
+  const userdataRef = doc(db, "users", ID)
+  const [userbookings, setUserbookings] = useState(null);
+console.log(userbookings)
 // Fetch room data from RoomData.ts
   const {roomdata} =useContact();
   useEffect(() => {
-
-    console.log(ID);
-    console.log(auth)
+    const fetchuserbookings = async () => {
+      const doc = await getDoc(userdataRef)
+      if(doc.exists()) {
+        const {bookings} = doc.data()
+        setUserbookings(bookings)
+      }
+    }
+    fetchuserbookings()
   }, []);
 
   const handleStartDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,9 +50,25 @@ const BookingForm = ({setisFormSubmitted, isFormSubmitted}:ContactFormProps) => 
 
   const form = useRef<HTMLFormElement>(null);
 
-  const handleBookingSubmit = (event: React.FormEvent) => {
+  const handleBookingSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+
     if (selectedRoom !== null && startDate.trim() !== '' && endDate.trim() !== '') {
+     const bookinglist = {
+      bookings: []
+     }
+      const bookingdata = {
+        startDate: startDate,
+        endDate: endDate,
+        roomID: selectedRoom
+      }
+      if (userbookings.length > 0 ){
+        userbookings.push(bookingdata)
+      }else {
+        bookinglist.bookings.push(bookingdata);
+      }
+      await setDoc(userdataRef, userbookings.length > 0 ? userbookings : bookinglist)
+
       // Should send request for room booking to the server
       //Sends email with booking confirmation to the user
       emailjs
