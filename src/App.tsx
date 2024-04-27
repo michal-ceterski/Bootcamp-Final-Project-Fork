@@ -45,7 +45,7 @@ function App() {
         <Header/>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="ourrooms" element={<RoomDescription setLoginPopupVisible={setLoginPopupVisible}/>} />
+          <Route path="ourrooms" element={<RoomDescription/>} />
           <Route path="/booking" element={loggedIn ? (<BookingForm isFormSubmitted={isFormSubmitted} setisFormSubmitted={setisFormSubmitted}/>) : ( <Navigate replace to={"/"}/>)} />
           <Route path="/aboutus" element={<AboutUs />} />
         <Route path="*" element={<NotFoundPage />} />
