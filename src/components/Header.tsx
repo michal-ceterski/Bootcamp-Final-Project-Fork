@@ -19,7 +19,7 @@ export type HeaderProps = {
 const Header = () => {
     const { loginPopupVisible, registerPopupVisible, openLoginPopup, closeLoginPopup, openRegisterPopup, closeRegisterPopup } = useAuth();
     const { contactPopupVisible, openContactPopup, closeContactPopup } = useContact();
-    const [isEmailSent, setisEmailSent] = useState(false)
+    const [isFormSubmitted, setisFormSubmitted] = useState(false)
     const navigate = useNavigate();
 
     const handleSignOut = () => {
@@ -61,8 +61,8 @@ const Header = () => {
             {loginPopupVisible && <Login onClose={closeLoginPopup} onRegisterClick={openRegisterPopup}/>}
             {registerPopupVisible && <Register onClose={closeRegisterPopup} onLoginClick={openLoginPopup}/>}
             {/* ts-ignore */}
-            {contactPopupVisible && <ContactForm isEmailSent={isEmailSent} setisEmailSent={setisEmailSent} onClose={closeContactPopup} />}
-            {isEmailSent && <Toaster iconClass = "fa-solid fa-circle-check" text=' Success! We&#39;ve received your message' isEmailSent={isEmailSent} setisEmailSent={setisEmailSent} /> }
+            {contactPopupVisible && <ContactForm isFormSubmitted={isFormSubmitted} setisFormSubmitted={setisFormSubmitted} onClose={handleCloseContactPopup} />}
+            {isFormSubmitted && <Toaster iconClass = "fa-solid fa-circle-check" text=' Success! We&#39;ve received your message' isFormSubmitted={isFormSubmitted} setisFormSubmitted={setisFormSubmitted} /> }
         </header>
     );
 }

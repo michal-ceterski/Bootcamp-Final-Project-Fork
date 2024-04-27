@@ -14,35 +14,48 @@ import { UserContext } from './auth/UserContext';
 import RoomDescription from './components/RoomDescription';
 import AboutUs from './components/AboutUs';
 import NotFoundPage from "./components/NotFoundPage";
+import { Navigate } from 'react-router-dom';
+import { Toaster } from './components/Toaster';
 
 function App() {
   const [count, setCount] = useState<number>(0)
-  
+  const [loggedIn, setLoggedIn] = useState<boolean>(false);
   const [loginPopupVisible, setLoginPopupVisible] = useState(false);
+  const [isFormSubmitted, setisFormSubmitted] = useState(false);
   const {setID}=useContext(UserContext)
   
   useEffect(() => {
-    const unsubscribe=onAuthStateChanged(auth, (user) => {
-      if(user){const ID=user.uid
-      setID(ID)}
-    })
-    return unsubscribe
-  }, [])
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const ID = user.uid;
+        setID(ID);
+        setLoggedIn(true);
+      } else {
+        setLoggedIn(false);
+      }
+    });
+    return unsubscribe;
+  }, []);
 
  
   return (
     <>
-          <BrowserRouter>
-              <Header/>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="ourrooms" element={<RoomDescription setLoginPopupVisible={setLoginPopupVisible}/>} />
-                <Route path="/booking" element={<BookingForm />} />
-                <Route path="/aboutus" element={<AboutUs />} />
-              <Route path="*" element={<NotFoundPage />} />
-              </Routes>
-              <Footer/>
-          </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+        <Header/>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="ourrooms" element={<RoomDescription setLoginPopupVisible={setLoginPopupVisible}/>} />
+          <Route path="/booking" element={loggedIn ? (<BookingForm isFormSubmitted={isFormSubmitted} setisFormSubmitted={setisFormSubmitted}/>) : ( <Navigate replace to={"/"}/>)} />
+          <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+        {isFormSubmitted && <Toaster iconClass = "fa-solid fa-circle-check" text=' Success! You&#39;ve booked a room' isFormSubmitted={isFormSubmitted} setisFormSubmitted={setisFormSubmitted}/>}
+        <Footer/>
+      
+        </BrowserRouter>
+      </AuthProvider>
+      
     </>
   )
 }
