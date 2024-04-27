@@ -1,6 +1,7 @@
 import { useState, FormEvent, useRef, useEffect, MutableRefObject }  from "react"
 import './ContactForm.css'
 import emailjs from '@emailjs/browser';
+import { useTranslation } from "react-i18next"
 
 
 type ContactFormProps = {
@@ -15,7 +16,7 @@ const ContactForm = ({onClose, setisFormSubmitted, isFormSubmitted}: ContactForm
     email: '',
     message: ''
   });
-  
+  const {t} =useTranslation()
 
  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -57,13 +58,13 @@ const ContactForm = ({onClose, setisFormSubmitted, isFormSubmitted}: ContactForm
     <div className="popup">
       <div className="popup-content">
         <button id="close-btn" onClick={onClose} >X</button>
-        <h3>Contact Us</h3>
+        <h3>{t('ContactUs')}</h3>
         <div className="popup-body">
             <form ref={form} onSubmit={sendEmail}>
                 <input id="input-name"
                   type="text"
                   name="user_name"
-                  placeholder="Name"
+                  placeholder={t('ContactFormPlaceholderName')}
                   required
                 />
                 <input id="input-email"
@@ -74,10 +75,10 @@ const ContactForm = ({onClose, setisFormSubmitted, isFormSubmitted}: ContactForm
                 />
                 <textarea id="input-message"
                   name="message"
-                  placeholder="Message"
+                  placeholder={t('ContactFormPlaceholderMessage')}
                   required
                 />
-              <button id="button_action" type="submit" className="submit-btn" value="Send">Submit</button>
+              <button id="button_action" type="submit" className="submit-btn" value="Send">{t('Submit')}</button>
             </form>
             </div>
       </div>

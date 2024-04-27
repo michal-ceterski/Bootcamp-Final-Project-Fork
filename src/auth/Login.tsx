@@ -2,7 +2,7 @@ import React, {useState, FormEvent} from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../api/firebase";
 import "./Login&Register.css";
-
+import { useTranslation } from "react-i18next"
 
 type Props = {
     onClose: ()=>void,
@@ -38,18 +38,19 @@ export const Login = ({onClose, onRegisterClick}: Props) => {
         onClose();
         onRegisterClick();
     };
-
+    const {t} =useTranslation()
+    
     return (
         <div className="popup">
             <div className="popup-content">
                 <button id="close-btn" onClick={onClose}>X</button>
-                <h3>Sign In</h3>
+                <h3>{t('LoginSignIn')}</h3>
                 <div className="popup-body">
                     <form onSubmit={handleSubmit}>
                         <input id="input-login" 
                             type="text" 
                             name="login" 
-                            placeholder="Login" 
+                            placeholder={t('LoginPlaceholderLogin')} 
                             value={formData.login} 
                             onChange={handleChange} 
                             required 
@@ -57,17 +58,17 @@ export const Login = ({onClose, onRegisterClick}: Props) => {
                         <input id="input-password"
                             type="password" 
                             name="password" 
-                            placeholder="Password" 
+                            placeholder={t('LoginPlaceholderPassword')}
                             value={formData.password} 
                             onChange={handleChange} 
                             required
                         />
-                        <button id="button_action" type="submit" className="submit-btn">Login</button>
+                        <button id="button_action" type="submit" className="submit-btn">{t('LoginLogin')}</button>
                     </form>
                 </div>
                 <div className="popup-login-register">
-                        <span id="text_referral">You don't have an account?</span>
-                        <button id="button_referral" onClick={handleToggleRegister}>Sign up</button>
+                        <span id="text_referral">{t('LoginNoAccount')}</span>
+                        <button id="button_referral" onClick={handleToggleRegister}>{t('LoginSignup')}</button>
                 </div>
             </div>
         </div>

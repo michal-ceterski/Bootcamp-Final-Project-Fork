@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
 import { UserContextProvider } from './auth/UserContext';
+import './i18n'
 import { AuthProvider } from './auth/AuthContext';
 import { ContactProvider } from './components/ContactContext';
 
