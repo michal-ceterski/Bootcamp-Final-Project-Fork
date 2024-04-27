@@ -1,16 +1,19 @@
 import React from 'react';
 import './Footer.css'
+import { useContact } from './ContactContext';
 
 const Footer = () => {
+  const { openContactPopup } = useContact();
+
   return (
     <footer>
       <div className="footer-content">
         <div className="footer-section">
           <h2>Links</h2>
           <ul>
-            <li><a href="/">Main page</a></li>
+            <li><a href="/">Home</a></li>
             <li><a href="/aboutus">About us</a></li>
-            <li><a href="/contact">Contact us</a></li>
+            <li><a href="#" onClick={openContactPopup}>Contact us</a></li>
           </ul>
         </div>
         <div className="footer-section">

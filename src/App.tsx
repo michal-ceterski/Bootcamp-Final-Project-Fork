@@ -14,7 +14,6 @@ import { UserContext } from './auth/UserContext';
 import RoomDescription from './components/RoomDescription';
 import AboutUs from './components/AboutUs';
 import NotFoundPage from "./components/NotFoundPage";
-import { AuthProvider } from './auth/AuthContext';
 import { Navigate } from 'react-router-dom';
 import { Toaster } from './components/Toaster';
 
