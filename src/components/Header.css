@@ -6,7 +6,8 @@
     min-height: 10%;
     background-color: #f1f3ee;
     color: #2c3f1f;
-    padding: 20px;
+    margin: 0 5em;
+    padding: 20px 0;
   }
   .logo {
     display: flex;
@@ -23,7 +24,6 @@
   }
 
   .navigation {
-    margin-right: 3em;
   }
   
   .navi_button {

@@ -34,9 +34,10 @@ const RoomDescription = () => {
   
     return (
         <>
+        <div className="all">
         <div className="container">
         <div className="title-text">{t('roomDescriptionHeader')}</div>
-        <div>
+        <div id="description-content">
             <div className="description_text">{t('roomDescriptionText')}</div>
             <div>
             <div>{t('roomDescriptionHeader2')}</div>
@@ -75,6 +76,7 @@ const RoomDescription = () => {
                 )
             })}
             <button onClick={handleBooking} className="navi_button booknow">{t('roomDescriptionBookNow')}</button>
+            </div>
         </>
     );
 }
