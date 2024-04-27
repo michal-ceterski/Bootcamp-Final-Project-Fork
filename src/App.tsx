@@ -40,7 +40,7 @@ function App() {
  
   return (
     <>
-      <AuthProvider>
+  
         <BrowserRouter>
         <Header/>
         <Routes>
@@ -54,7 +54,7 @@ function App() {
         <Footer/>
       
         </BrowserRouter>
-      </AuthProvider>
+  
       
     </>
   )
