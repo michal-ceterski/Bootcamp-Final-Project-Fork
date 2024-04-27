@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import { useContext } from 'react';
 import { UserContext } from '../auth/UserContext';
@@ -5,6 +6,9 @@ import { auth } from "../api/firebase";
 import emailjs from '@emailjs/browser';
 import { useTranslation } from "react-i18next"
 import { useContact } from './ContactContext';
+import { db } from '../api/firebase';
+import { setDoc, doc, getDoc, onSnapshot} from 'firebase/firestore';
+import { v4 as uuidv4 } from "uuid";
 
 type ContactFormProps = {
   isFormSubmitted: boolean,
@@ -17,13 +21,21 @@ const BookingForm = ({setisFormSubmitted, isFormSubmitted}:ContactFormProps) => 
   const [selectedRoom, setSelectedRoom] = useState<number | null>(null);
   const { ID } = useContext(UserContext);
   const {t} =useTranslation()
-
+  const userdataRef = doc(db, "users", ID)
+  const [userbookings, setUserbookings] = useState([]);
+console.log(userbookings)
 // Fetch room data from RoomData.ts
   const {roomdata} =useContact();
   useEffect(() => {
-
-    console.log(ID);
-    console.log(auth)
+    const fetchuserbookings = async () => {
+      const doc = await onSnapshot(userdataRef, (doc) => {
+        if(doc.exists()) {
+          const {bookings} = doc.data()
+          setUserbookings(bookings)
+        }
+      })
+    }
+    fetchuserbookings()
   }, []);
 
   const handleStartDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,9 +53,22 @@ const BookingForm = ({setisFormSubmitted, isFormSubmitted}:ContactFormProps) => 
 
   const form = useRef<HTMLFormElement>(null);
 
-  const handleBookingSubmit = (event: React.FormEvent) => {
+const handleDelete = async (resID) => {
+  await setDoc(userdataRef,{bookings: userbookings.filter(obj => obj.resID !== resID)})
+}
+
+  const handleBookingSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+
     if (selectedRoom !== null && startDate.trim() !== '' && endDate.trim() !== '') {
+      const bookingdata = {
+        resID: uuidv4(),
+        startDate: startDate,
+        endDate: endDate,
+        roomID: selectedRoom
+      }
+      await setDoc(userdataRef, {bookings: [...userbookings, bookingdata]})
+
       // Should send request for room booking to the server
       //Sends email with booking confirmation to the user
       emailjs
@@ -107,6 +132,18 @@ const BookingForm = ({setisFormSubmitted, isFormSubmitted}:ContactFormProps) => 
         </select>
         <button type="submit">{t('booking_submit')}</button>
       </form>
+      <div>Bookings</div>
+    {userbookings?.map((booking) => {
+        return (
+          <React.Fragment>
+            <div>Start date: {booking.startDate}</div>
+            <div>End date: {booking.endDate}</div>
+            <div>Room: {booking.roomID}</div>
+            <button onClick={() => handleDelete(booking.resID)}>Delete reservation</button>
+          </React.Fragment>
+        )
+    })}
+
     </div>
   );
 };
