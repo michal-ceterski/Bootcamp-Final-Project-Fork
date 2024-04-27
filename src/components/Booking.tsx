@@ -1,11 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { useContext } from 'react';
 import { UserContext } from '../auth/UserContext';
-import roomdata from './RoomData';
-import { Room } from './RoomData';
 import { auth } from "../api/firebase";
 import emailjs from '@emailjs/browser';
 import { useTranslation } from "react-i18next"
+import { useContact } from './ContactContext';
 
 type ContactFormProps = {
   isFormSubmitted: boolean,
@@ -20,9 +19,9 @@ const BookingForm = ({setisFormSubmitted, isFormSubmitted}:ContactFormProps) => 
   const {t} =useTranslation()
 
 // Fetch room data from RoomData.ts
-  const [rooms, setRooms] = useState<Room[]>([]);
+  const {roomdata} =useContact();
   useEffect(() => {
-    setRooms(roomdata);
+
     console.log(ID);
     console.log(auth)
   }, []);
@@ -102,7 +101,7 @@ const BookingForm = ({setisFormSubmitted, isFormSubmitted}:ContactFormProps) => 
           required
         >
           <option value="" disabled>{t('booking_room')}</option>
-          {rooms.map(room => (
+          {roomdata.map(room => (
             <option key={room.id} value={room.id}>{room.roomname} - ${room.price}</option>
           ))}
         </select>

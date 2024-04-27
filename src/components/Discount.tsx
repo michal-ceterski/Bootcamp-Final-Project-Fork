@@ -9,9 +9,9 @@ const Discount = () => {
     const handleSubmit = (e : FormEvent) => {
         e.preventDefault()
         const docRef = addDoc(collection(db, "users"), {
-            email: e.target.email.value,
+            email: (e.target as any).email.value,
         });
-        e.target.email.value = "";
+        (e.target as any).email.value = "";
     }
     const {t} =useTranslation()
     return (

@@ -1,33 +1,37 @@
-import React, { useContext, useEffect } from "react";
-import roomdata from './RoomData'
+import React, { useContext, useEffect, useState } from "react";
 import './Description.css'
 import { useNavigate } from "react-router-dom";
 import { UserContext } from '../auth/UserContext';
-import {Room} from './RoomData';
 import { AuthProvider, useAuth } from "../auth/AuthContext";
 import { useTranslation } from "react-i18next"
+import { useContact } from "./ContactContext";
 
 const RoomDescription = () => {
     const navigate = useNavigate();
     const { ID } = useContext(UserContext);
     const { loginPopupVisible, openLoginPopup, closeLoginPopup } = useAuth();
     const {t} =useTranslation()
+    const {roomdata, setRoomdata} = useContact();
+    const [isBooknowclicked, setIsBooknowclicked] = useState(false)
 
     const handleBooking = () => {
         if (ID) {
             navigate( "/booking" );
         } else {
             openLoginPopup();
+            setIsBooknowclicked(true)
         }
     };
 
     useEffect(() => {
-        if (!loginPopupVisible && ID) {
+        if (!loginPopupVisible && isBooknowclicked && ID) {
             navigate("/booking");
             closeLoginPopup();
+            setIsBooknowclicked(false)
         }
-    }, [loginPopupVisible, ID, closeLoginPopup, navigate]);
+    }, [loginPopupVisible, ID, closeLoginPopup, navigate, isBooknowclicked, setIsBooknowclicked]);
 
+  
     return (
         <>
         <div className="container">
@@ -50,7 +54,7 @@ const RoomDescription = () => {
         </div>
         </div>
         
-            {roomdata.map((room:Room) => {
+            {roomdata.map((room) => {                 
                 return (
                     <React.Fragment key={room.id}>
                         <div className="room_container">
