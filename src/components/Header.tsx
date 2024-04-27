@@ -61,7 +61,7 @@ const Header = () => {
             {loginPopupVisible && <Login onClose={closeLoginPopup} onRegisterClick={openRegisterPopup}/>}
             {registerPopupVisible && <Register onClose={closeRegisterPopup} onLoginClick={openLoginPopup}/>}
             {/* ts-ignore */}
-            {contactPopupVisible && <ContactForm isFormSubmitted={isFormSubmitted} setisFormSubmitted={setisFormSubmitted} onClose={handleCloseContactPopup} />}
+            {contactPopupVisible && <ContactForm isFormSubmitted={isFormSubmitted} setisFormSubmitted={setisFormSubmitted} onClose={closeContactPopup} />}
             {isFormSubmitted && <Toaster iconClass = "fa-solid fa-circle-check" text=' Success! We&#39;ve received your message' isFormSubmitted={isFormSubmitted} setisFormSubmitted={setisFormSubmitted} /> }
         </header>
     );
