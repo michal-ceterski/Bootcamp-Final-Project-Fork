@@ -27,6 +27,7 @@
   }
   
   .navi_button {
+    width: 150px;
     background-color: #f1f3ee;
     color: #2c3f1f;
     border-color: #2c3f1f;
@@ -49,4 +50,13 @@
     color: #f1f3ee;
   }
 
-  
+  #LngSelector {
+    height: 50px;
+    width: 60px;
+    background-color: #f1f3ee;
+    color: #2c3f1f;
+    border-color: #2c3f1f;
+    margin-left: 10px;
+    padding-left: 10px;
+    border-radius: 10px;
+  }  
