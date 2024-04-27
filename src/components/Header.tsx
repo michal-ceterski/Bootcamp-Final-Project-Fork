@@ -12,6 +12,7 @@ import { useAuth } from "../auth/AuthContext";
 import { LanguageSelector } from "./LanguageSelector";
 import { useTranslation, } from "react-i18next"
 
+import { useContact } from "./ContactContext";
 
 export type HeaderProps = {
     loginPopupVisible:boolean,
@@ -20,7 +21,7 @@ export type HeaderProps = {
 
 const Header = () => {
     const { loginPopupVisible, registerPopupVisible, openLoginPopup, closeLoginPopup, openRegisterPopup, closeRegisterPopup } = useAuth();
-    const [contactPopupVisible, setContactPopupVisible] = useState(false);
+    const { contactPopupVisible, openContactPopup, closeContactPopup } = useContact();
     const [isFormSubmitted, setisFormSubmitted] = useState(false)
     const navigate = useNavigate();
     const {t, } =useTranslation()
@@ -34,14 +35,6 @@ const Header = () => {
         .catch((error) => {
         console.error('Error during logout:', error);
         });
-    };
-
-    const handleCloseContactPopup = () => {
-        setContactPopupVisible(false);          
-    };
-
-    const handleContactClick = () => {
-        setContactPopupVisible(true);
     };
 
     const handleBooking = () => {
@@ -63,7 +56,7 @@ const Header = () => {
             <div className="navigation">
                 {auth?.currentUser?.email && <button onClick={handleBooking} className="navi_button">{t('BookNow')}</button>}
                 <button onClick={handleOurRooms} className="navi_button">{t('OurRooms')}</button>
-                <button onClick={handleContactClick} className="navi_button">{t('HeaderContactUs')}</button>
+                <button onClick={openContactPopup} className="navi_button">{t('HeaderContactUs')}</button>
                 {!auth?.currentUser?.email &&<button onClick={openLoginPopup} className="navi_button" style={{backgroundColor: "#2c3f1f", color: "#f1f3ee"}}>{t('HeaderLogin')}</button>}
                 {auth?.currentUser?.email && <button onClick={handleSignOut} className="navi_button" style={{backgroundColor: "#2c3f1f", color: "#f1f3ee"}}>{t('HeaderLogOut')}</button>}
                 <LanguageSelector/>
@@ -71,7 +64,7 @@ const Header = () => {
             {loginPopupVisible && <Login onClose={closeLoginPopup} onRegisterClick={openRegisterPopup}/>}
             {registerPopupVisible && <Register onClose={closeRegisterPopup} onLoginClick={openLoginPopup}/>}
             {/* ts-ignore */}
-            {contactPopupVisible && <ContactForm isFormSubmitted={isFormSubmitted} setisFormSubmitted={setisFormSubmitted} onClose={handleCloseContactPopup} />}
+            {contactPopupVisible && <ContactForm isFormSubmitted={isFormSubmitted} setisFormSubmitted={setisFormSubmitted} onClose={closeContactPopup} />}
             {isFormSubmitted && <Toaster iconClass = "fa-solid fa-circle-check" text=' Success! We&#39;ve received your message' isFormSubmitted={isFormSubmitted} setisFormSubmitted={setisFormSubmitted} /> }
         </header>
     );

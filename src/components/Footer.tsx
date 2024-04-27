@@ -1,18 +1,21 @@
 import React from 'react';
 import './Footer.css';
 import { useTranslation } from "react-i18next"
+import { useContact } from './ContactContext';
 
 const Footer = () => {
   const {t} =useTranslation()
+  const { openContactPopup } = useContact();
+
   return (
     <footer>
       <div className="footer-content">
         <div className="footer-section">
           <h2>{t('Links')}</h2>
           <ul>
-            <li><a href="/">{t('MainPage')}</a></li>
-            <li><a href="/aboutus">{t('AboutUs')}</a></li>
-            <li><a href="/contact">{t('FooterContactUs')}</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/aboutus">About us</a></li>
+            <li><a href="#" onClick={openContactPopup}>Contact us</a></li>
           </ul>
         </div>
         <div className="footer-section">

@@ -11,6 +11,7 @@ const Discount = () => {
         const docRef = addDoc(collection(db, "users"), {
             email: e.target.email.value,
         });
+        e.target.email.value = "";
     }
     const {t} =useTranslation()
     return (
