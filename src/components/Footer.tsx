@@ -13,9 +13,9 @@ const Footer = () => {
         <div className="footer-section">
           <h2>{t('Links')}</h2>
           <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/aboutus">About us</a></li>
-            <li><a href="#" onClick={openContactPopup}>Contact us</a></li>
+            <li><a href="/">{t('MainPage')}</a></li>
+            <li><a href="/aboutus">{t('AboutUs')}</a></li>
+            <li><a href="#" onClick={openContactPopup}>{t('FooterContactUs')}</a></li>
           </ul>
         </div>
         <div className="footer-section">
