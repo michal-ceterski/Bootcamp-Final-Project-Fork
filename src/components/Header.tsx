@@ -9,6 +9,9 @@ import { Login } from "../auth/Login";
 import { Register } from "../auth/Register";
 import ContactForm from "./ContactForm";
 import { useAuth } from "../auth/AuthContext";
+import { LanguageSelector } from "./LanguageSelector";
+import { useTranslation, } from "react-i18next"
+
 
 export type HeaderProps = {
     loginPopupVisible:boolean,
@@ -20,6 +23,7 @@ const Header = () => {
     const [contactPopupVisible, setContactPopupVisible] = useState(false);
     const [isFormSubmitted, setisFormSubmitted] = useState(false)
     const navigate = useNavigate();
+    const {t, } =useTranslation()
 
     const handleSignOut = () => {
         signOut(auth)
@@ -48,9 +52,7 @@ const Header = () => {
         navigate( "/ourrooms" );
     };
 
-    // useEffect(()=>{
-    //     console.log(isEmailSent)
-    // },[isEmailSent])
+    
 
     return (
         <header className="header">
@@ -59,11 +61,12 @@ const Header = () => {
             <span className="hotel_name" onClick={()=> window.location.replace('/')}>Sol Hotel</span>
             </div>
             <div className="navigation">
-                {auth?.currentUser?.email && <button onClick={handleBooking} className="navi_button">Book Now</button>}
-                <button onClick={handleOurRooms} className="navi_button">Our Rooms</button>
-                <button onClick={handleContactClick} className="navi_button">Contact Us</button>
-                {!auth?.currentUser?.email &&<button onClick={openLoginPopup} className="navi_button" style={{backgroundColor: "#2c3f1f", color: "#f1f3ee"}}>Login</button>}
-                {auth?.currentUser?.email && <button onClick={handleSignOut} className="navi_button" style={{backgroundColor: "#2c3f1f", color: "#f1f3ee"}}>Log Out</button>}
+                {auth?.currentUser?.email && <button onClick={handleBooking} className="navi_button">{t('BookNow')}</button>}
+                <button onClick={handleOurRooms} className="navi_button">{t('OurRooms')}</button>
+                <button onClick={handleContactClick} className="navi_button">{t('HeaderContactUs')}</button>
+                {!auth?.currentUser?.email &&<button onClick={openLoginPopup} className="navi_button" style={{backgroundColor: "#2c3f1f", color: "#f1f3ee"}}>{t('HeaderLogin')}</button>}
+                {auth?.currentUser?.email && <button onClick={handleSignOut} className="navi_button" style={{backgroundColor: "#2c3f1f", color: "#f1f3ee"}}>{t('HeaderLogOut')}</button>}
+                <LanguageSelector/>
             </div>
             {loginPopupVisible && <Login onClose={closeLoginPopup} onRegisterClick={openRegisterPopup}/>}
             {registerPopupVisible && <Register onClose={closeRegisterPopup} onLoginClick={openLoginPopup}/>}

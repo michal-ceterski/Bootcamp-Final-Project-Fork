@@ -3,7 +3,9 @@ import { db } from "../api/firebase"
 
 export type Room = {id: number,
 roomname: string,
+roomnamePL: string,
 roomdescription: string,
+roomdescriptionPL: string,
 price: number,
 surface: number,
 people: number,

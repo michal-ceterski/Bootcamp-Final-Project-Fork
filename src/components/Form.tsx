@@ -1,4 +1,5 @@
 import { useState, FormEvent }  from "react"
+import { useTranslation } from "react-i18next"
 
 interface FormProps {
   submitText: string,
@@ -9,6 +10,7 @@ interface FormProps {
 export const Form = ({ submitText, isPasswordHidden = false, handleSubmit } : FormProps) => {
     const [login, setLogin] = useState<string>("")
     const [password, setPassword] = useState<string>("")
+    const {t} =useTranslation()
 
     const onSubmit = (e : FormEvent)  => {
         e.preventDefault()
@@ -17,12 +19,12 @@ export const Form = ({ submitText, isPasswordHidden = false, handleSubmit } : Fo
     return (
     <form onSubmit={onSubmit}>
       <div>
-        <label htmlFor="email">Login</label>
+        <label htmlFor="email">{t('Login')}</label>
         <input type="email" name="email" id="email" value={login} onChange={(e) => setLogin(e.target.value)} />
       </div>
       {!isPasswordHidden && (
         <div>
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">{t('Password')}</label>
           <input type="password" name="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
         </div>
       )}

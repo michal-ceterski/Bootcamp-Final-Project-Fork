@@ -5,6 +5,7 @@ import roomdata from './RoomData';
 import { Room } from './RoomData';
 import { auth } from "../api/firebase";
 import emailjs from '@emailjs/browser';
+import { useTranslation } from "react-i18next"
 
 type ContactFormProps = {
   isFormSubmitted: boolean,
@@ -16,6 +17,7 @@ const BookingForm = ({setisFormSubmitted, isFormSubmitted}:ContactFormProps) => 
   const [endDate, setEndDate] = useState<string>('');
   const [selectedRoom, setSelectedRoom] = useState<number | null>(null);
   const { ID } = useContext(UserContext);
+  const {t} =useTranslation()
 
 // Fetch room data from RoomData.ts
   const [rooms, setRooms] = useState<Room[]>([]);
@@ -70,10 +72,10 @@ const BookingForm = ({setisFormSubmitted, isFormSubmitted}:ContactFormProps) => 
 
   return (
     <div>
-      <h2>Book a Room</h2>
+      <h2>{t('booking_form')}</h2>
       <form ref={form} onSubmit={handleBookingSubmit}>
         <input type='hidden' name='user_email' value={auth?.currentUser?.email}/>
-        <label htmlFor="start-date">Choose Start Date:</label>
+        <label htmlFor="start-date">{t('booking_start_date')}</label>
         <input
           type="date"
           id="start-date"
@@ -82,7 +84,7 @@ const BookingForm = ({setisFormSubmitted, isFormSubmitted}:ContactFormProps) => 
           onChange={handleStartDateChange}
           required
         />
-        <label htmlFor="end-date">Choose End Date:</label>
+        <label htmlFor="end-date">{t('booking_end_date')}</label>
         <input
           type="date"
           id="end-date"
@@ -91,7 +93,7 @@ const BookingForm = ({setisFormSubmitted, isFormSubmitted}:ContactFormProps) => 
           onChange={handleEndDateChange}
           required
         />
-        <label htmlFor="room">Choose Room:</label>
+        <label htmlFor="room">{t('booking_room')}</label>
         <select
           id="room"
           name="room"
@@ -99,12 +101,12 @@ const BookingForm = ({setisFormSubmitted, isFormSubmitted}:ContactFormProps) => 
           onChange={(event) => handleRoomSelect(Number(event.target.value))}
           required
         >
-          <option value="" disabled>Choose Room</option>
+          <option value="" disabled>{t('booking_room')}</option>
           {rooms.map(room => (
             <option key={room.id} value={room.id}>{room.roomname} - ${room.price}</option>
           ))}
         </select>
-        <button type="submit">Book</button>
+        <button type="submit">{t('booking_submit')}</button>
       </form>
     </div>
   );
