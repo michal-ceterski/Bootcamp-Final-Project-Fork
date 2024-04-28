@@ -65,7 +65,7 @@ const Header = ({error, setError}:HeaderProps) => {
             </div>
             {loginPopupVisible && <Login onClose={closeLoginPopup} onRegisterClick={openRegisterPopup}/>}
             {registerPopupVisible && <Register onClose={closeRegisterPopup} onLoginClick={openLoginPopup}/>}
-            {contactPopupVisible && <ContactForm isFormSubmitted={isFormSubmitted} setisFormSubmitted={setisFormSubmitted} onClose={closeContactPopup} />}
+            {contactPopupVisible && <ContactForm error={error} setError={setError} isFormSubmitted={isFormSubmitted} setisFormSubmitted={setisFormSubmitted} onClose={closeContactPopup} />}
             {isFormSubmitted && <Toaster iconID ='check' iconClass = "fa-solid fa-circle-check" text={t('ConfirmationToast')}error={error} setError={setError} isFormSubmitted={isFormSubmitted} setisFormSubmitted={setisFormSubmitted} /> }
         </header>
     );
