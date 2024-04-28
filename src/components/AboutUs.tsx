@@ -8,16 +8,19 @@ const AboutUs = () => {
     const {t} =useTranslation()
 
     return (
-        <>         
-         <div className="info-container">
-         <h2>{t('about_us_a_brand_leader')}</h2>
-         <p>{t('about_us_p1')}</p>
-            <span>{t('about_us_reception')}</span>
-            <span>{t('about_us_Tel_No')}<a href="tel:+48589999999">+48 58 999 99 99</a></span>
-            <span>Email: <a href="mailto:recepcja@solhotel.com">recepcja@solhotel.com</a></span>
-            <span>{t('about_us_Booking_department')}</span>
-            <span>{t('about_us_Tel_No')}<a href="tel:+48588888888">+48 58 888 88 88</a></span>
-            <span>Email: <a href="mailto:recepcja@solhotel.com">booking@solhotel.com</a></span>
+        <>
+        <div className="all">
+        <div className="container">      
+         <div className="title-text">{t('about_us_a_brand_leader')}</div>
+            <div id="description-content">
+                <p>{t('about_us_p1')}</p>
+                    <span>{t('about_us_reception')}</span>
+                    <span>{t('about_us_Tel_No')}<a href="tel:+48589999999">+48 58 999 99 99</a></span>
+                    <span>Email: <a href="mailto:recepcja@solhotel.com">recepcja@solhotel.com</a></span>
+                    <span>{t('about_us_Booking_department')}</span>
+                    <span>{t('about_us_Tel_No')}<a href="tel:+48588888888">+48 58 888 88 88</a></span>
+                    <span>Email: <a href="mailto:recepcja@solhotel.com">booking@solhotel.com</a></span>
+            </div>
         </div>
         <div className="box-container">
             <img className="value-img" src="https://cache.marriott.com/content/dam/marriott-renditions/dm-static-renditions/digitallegal-micorp-cec/en_us/micorp_core-values-heritage/unlimited/photo/assets-usage-rights/pdt-hot-shoppe-1927-744354017118562-wide-hor.jpg"></img>
@@ -47,6 +50,7 @@ const AboutUs = () => {
                 </div>
             <img className="value-img" src="https://cache.marriott.com/content/dam/marriott-renditions/dm-static-renditions/digitallegal-micorp-cec/en_us/micorp_sustainability-social-impact/unlimited/photo/assets-usage-rights/pdt-sustain---tree-planting-484752399741473-wide-hor.jpg"></img>
         </div>
+        </div> 
         </>
     )
 }
