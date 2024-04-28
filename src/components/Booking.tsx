@@ -144,7 +144,7 @@ const handleDelete = async (resID) => {
       <div>{t('bookingBookings')}</div>
     {userbookings?.map((booking) => {
         return (
-          <React.Fragment>
+          <React.Fragment key={booking.resID}>
             <div>{t('bookingStartdate')} {booking.startDate}</div>
             <div>{t('bookingEnddate')} {booking.endDate}</div>
             <div>{t('bookingRoom')} {booking.roomID}</div>
