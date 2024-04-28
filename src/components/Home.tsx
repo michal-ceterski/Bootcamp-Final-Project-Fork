@@ -15,8 +15,6 @@ export const Home = () => {
     
 return (
   <>
-    { auth?.currentUser?.email && <h1>Hello {auth?.currentUser?.email}</h1>}
-    { !auth?.currentUser?.email && <h1>Hello</h1>}
     <Gallery/>
     <Location/>
     <Discount/>

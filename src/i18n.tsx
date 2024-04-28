@@ -37,7 +37,12 @@ i18next
                     booking_start_date: 'Choose Start Date:',
                     booking_end_date: 'Choose End Date:',
                     booking_room: 'Choose Room:',
-                    booking_submit: 'Book',
+                    booking_submit: 'Submit',
+                    bookingBookings: 'Bookings',
+                    bookingStartdate: 'Start date:',
+                    bookingEnddate: 'End date:',
+                    bookingRoom: 'Room:',
+                    bookingDeletereservation: 'Delete reservation',
                     // Contact From
                     ContactUs: 'Contact Us',
                     Submit: 'Submit',
@@ -82,6 +87,7 @@ i18next
                     (hereinafter referred to as the Company) by electronic means to the e-mail address provided 
                     in the form. I understand that I may withdraw my consent at any time and that such withdrawal 
                     shall not affect the lawfulness of processing based on consent before its withdrawal.`,
+                    discountSubmit: 'Submit',
                     //LanguageSelector
                     LanguageSelector: 'Choose a language',
                     //RoomDescription
@@ -118,6 +124,12 @@ i18next
                     RegisterJoin: 'Join',
                     RegisterAlreadyAccount: 'Already have an account?',
                     RegisterSignin: 'Sign in',
+                    RegisterPlaceholderPassword: 'Password',
+                    RegisterPlaceholderName: 'Name',
+                    //Toaster
+                    ConfirmationToast:'Success! Submission successful',
+                    ErrorToast: 'Something went wrong. Try again later',
+                    
                 
                 }
             },
@@ -142,6 +154,11 @@ i18next
                     booking_end_date: 'Wybierz datę zakończenia:',
                     booking_room: 'Wybierz pokój:',
                     booking_submit: 'Zarezerwuj',
+                    bookingBookings: 'Rezerwacje',
+                    bookingStartdate: 'Początek:',
+                    bookingEnddate: 'Koniec:',
+                    bookingRoom: 'Pokój:',
+                    bookingDeletereservation: 'Anuluj Rezerwację',
                     // Contact From
                     ContactUs: 'Napisz do nas',
                     Submit: 'Wyślij',
@@ -180,6 +197,7 @@ i18next
                     z siedzibą w Tajnej Górze (01-100) al. Nieznana 5 (dalej zwanej Spółką) za pomocą środków elektronicznych 
                     na podany w formularzu adres e-mail. Rozumiem, że mogę w dowolnym momencie wycofać swoją zgodę, a takie wycofanie nie będzie miało wpływu na 
                     zgodność z prawem przetwarzania opartego na zgodzie przed jej wycofaniem.`,
+                    discountSubmit: 'Wyślij',
                      //LanguageSelector
                      LanguageSelector: 'Wybierz język',
                      //RoomDescription
@@ -220,6 +238,10 @@ i18next
                     RegisterSignin: 'Zaloguj się',
                     RegisterPlaceholderPassword: 'Hasło',
                     RegisterPlaceholderName: 'Nazwa użytkownika',
+                     //Toaster
+                     ConfirmationToast:' Udało się',
+                     ErrorToast: 'Coś poszło ne tak. Spróbuj później',
+                     
                 }
             }
         }

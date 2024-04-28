@@ -17,9 +17,15 @@
     box-shadow: 0 0 20px rgb(0,0,0,0.3);
 }
 
-.toast i {
+#check {
     margin: 0 10px;
     font-size: 35px;
     color: green;
+
+}
+#cross {
+    margin: 0 10px;
+    font-size: 35px;
+    color: red;
 
 }
