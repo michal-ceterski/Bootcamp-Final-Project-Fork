@@ -5,15 +5,35 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --text-color-light: rgba(255, 255, 255, 0.87);
+  --background-color-light: #242424;
+
+  --text-color-dark: #242424;
+  --background-color-dark: #ffffff;
+
+  color: var(--text-color-light);
+  background-color: var(--background-color-light);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: var(--text-color-light);
+    background-color: var(--background-color-light);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: var(--text-color-dark);
+    background-color: var(--background-color-dark);
+  }
+}
+
 
 a {
   font-weight: 500;
