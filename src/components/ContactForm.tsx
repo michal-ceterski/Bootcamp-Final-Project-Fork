@@ -7,10 +7,12 @@ import { useTranslation } from "react-i18next"
 type ContactFormProps = {
   onClose: ()=>void,
   isFormSubmitted: boolean,
-  setisFormSubmitted: React.Dispatch<React.SetStateAction<boolean>>
+  setisFormSubmitted: React.Dispatch<React.SetStateAction<boolean>>,
+  error: boolean,
+  setError: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
-const ContactForm = ({onClose, setisFormSubmitted, isFormSubmitted}: ContactFormProps) => {
+const ContactForm = ({onClose, setisFormSubmitted, isFormSubmitted, error, setError }: ContactFormProps) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -42,7 +44,9 @@ const ContactForm = ({onClose, setisFormSubmitted, isFormSubmitted}: ContactForm
           
           },
         (error) => {
+
           console.log('FAILED...', error.text);
+          setError(true)
         },
       )
     
