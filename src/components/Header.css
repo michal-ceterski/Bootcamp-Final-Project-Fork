@@ -6,7 +6,8 @@
     min-height: 10%;
     background-color: #f1f3ee;
     color: #2c3f1f;
-    padding: 20px;
+    margin: 0 5em;
+    padding: 20px 0;
   }
   .logo {
     display: flex;
@@ -23,10 +24,10 @@
   }
 
   .navigation {
-    margin-right: 3em;
   }
   
   .navi_button {
+    width: 150px;
     background-color: #f1f3ee;
     color: #2c3f1f;
     border-color: #2c3f1f;
@@ -49,4 +50,13 @@
     color: #f1f3ee;
   }
 
-  
+  #LngSelector {
+    height: 50px;
+    width: 60px;
+    background-color: #f1f3ee;
+    color: #2c3f1f;
+    border-color: #2c3f1f;
+    margin-left: 10px;
+    padding-left: 10px;
+    border-radius: 10px;
+  }  

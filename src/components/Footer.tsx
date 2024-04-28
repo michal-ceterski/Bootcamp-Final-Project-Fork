@@ -15,6 +15,7 @@ const Footer = () => {
           <ul>
             <li><a href="/">{t('MainPage')}</a></li>
             <li><a href="/aboutus">{t('AboutUs')}</a></li>
+            <li><a href="/ourrooms">{t('OurRooms')}</a></li>
             <li><a href="#" onClick={openContactPopup}>{t('FooterContactUs')}</a></li>
           </ul>
         </div>
@@ -28,9 +29,11 @@ const Footer = () => {
         </div>
         <div className="footer-section">
           <h2>{t('Contact')}</h2>
-          <p>Adress: Al. Nieznana 5, 01-100 Tajna Góra, Nibylandia</p>
-          <p><a className='contact-link' href="tel:+425891234567">+425 89 123 45 67</a></p>
-          <p><a className='contact-link' href="mailto:info@solhotel.com" target='_blank'>info@solhotel.com</a></p>
+          <ul>
+            <li> 17 Unknown St,<br/> London SE1 9SG,<br/> Great Britain</li>
+            <li><a className='contact-link' href="tel:+425891234567">+425 89 123 45 67</a></li>
+            <li><a className='contact-link' href="mailto:info@solhotel.com" target='_blank'>info@solhotel.com</a></li>
+          </ul>
         </div>
       </div>
       <div className="footer-bottom">

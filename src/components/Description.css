@@ -1,6 +1,18 @@
+.all{
+    color: #2c3f1f;
+    margin: 6em 5em;
+}
+
 .container {
     display: flex;
-    padding: 20px;
+    padding-bottom: 70px;
+}
+
+#description-content {
+    font-size: 15px;
+    margin-left: 130px;
+    display: flex;
+    flex-direction: column;
 }
 
 .add_image {
@@ -13,18 +25,20 @@
     display: flex;
     background-color: #fff;
     flex-wrap: wrap;
-    width: 750px;
+    max-width: 1000px;
     border: 1px solid;
     border-radius: 30px;
     padding: 30px;
     margin: 30px;
+    margin-left: 0;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .hotel_room_image {
     height: 300px;
     padding: 30px;
+    padding-left: 0;
     border-radius: 50px;
 }
 .room_container, .info_container {
@@ -38,5 +52,14 @@
 .title-text {
     font-weight: bold;
     margin: 10px 30px;
-    font-size: 1.2em;
+    margin-left: 0;
+    font-size: 1.5em;
+}
+
+.navi_button.booknow {
+    display: flex;
+    margin-top: 70px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
 }

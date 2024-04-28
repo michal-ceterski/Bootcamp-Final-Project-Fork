@@ -6,12 +6,12 @@ import Gallery from './Gallery';
 import Location from './Location';
 
 export const Home = () => {
-    const handleSignOut = () => {
-        signOut(auth).then(() => {
-        }).catch((error) => {
-          console.error('Error during logout:', error);
-        });
-      };
+    // const handleSignOut = () => {
+    //     signOut(auth).then(() => {
+    //     }).catch((error) => {
+    //       console.error('Error during logout:', error);
+    //     });
+    //   };
     
 return (
   <>

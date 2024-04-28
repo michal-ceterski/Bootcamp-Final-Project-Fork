@@ -23,7 +23,7 @@ const Location = () => {
             />
                 <Marker position={[51.505, -0.09]}>
                     <Popup>
-                Hotel Sol <br /> Al. Nieznana 5, <br /> 01-100 Tajna Góra, <br /> Nibylandia
+                Hotel Sol <br /> 17 Unknown St, <br /> London SE1 9SG, <br /> Great Britain
                 </Popup>
                 </Marker>
             </MapContainer>
