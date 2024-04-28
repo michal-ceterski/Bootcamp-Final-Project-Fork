@@ -9,6 +9,7 @@ import { useContact } from './ContactContext';
 import { db } from '../api/firebase';
 import { setDoc, doc, getDoc, onSnapshot} from 'firebase/firestore';
 import { v4 as uuidv4 } from "uuid";
+import './Booking.css';
 
 type ContactFormProps = {
   isFormSubmitted: boolean,
@@ -95,9 +96,11 @@ const handleDelete = async (resID) => {
   };
 
   return (
+    <div className='all'>
     <div>
       <h2>{t('booking_form')}</h2>
-      <form ref={form} onSubmit={handleBookingSubmit}>
+      <div id='booking-form'  >
+      <form  ref={form} onSubmit={handleBookingSubmit}>
         <input type='hidden' name='user_email' value={auth?.currentUser?.email}/>
         <label htmlFor="start-date">{t('booking_start_date')}</label>
         <input
@@ -130,20 +133,24 @@ const handleDelete = async (resID) => {
             <option key={room.id} value={room.id}>{room.roomname} - ${room.price}</option>
           ))}
         </select>
-        <button type="submit">{t('booking_submit')}</button>
+        <button id="click" type="submit">{t('booking_submit')}</button>
       </form>
-      <div>Bookings</div>
+      </div>
+
+      <div className='booking-list'>
+      <div className='booking-list-title'>Bookings</div>
     {userbookings?.map((booking) => {
         return (
           <React.Fragment>
             <div>Start date: {booking.startDate}</div>
             <div>End date: {booking.endDate}</div>
             <div>Room: {booking.roomID}</div>
-            <button onClick={() => handleDelete(booking.resID)}>Delete reservation</button>
+            <button id="click" onClick={() => handleDelete(booking.resID)}>Delete reservation</button>
           </React.Fragment>
         )
     })}
-
+    </div>
+    </div>
     </div>
   );
 };
