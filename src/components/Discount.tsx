@@ -25,7 +25,7 @@ const Discount = () => {
              <input type="email" id="email"  name="email" required/><br></br>
              <input type="checkbox" id="agreed" name="agreed" value="Agreed" required/>
              <label htmlFor="agreed"> {t('discountConsent')}</label><br></br>
-             <input type="submit" id="submit" name="submit" value="Submit"/>
+             <input type="submit" id="submit" name="submit" value={t('discountSubmit')}/>
         </form>
         </div>
         </div>

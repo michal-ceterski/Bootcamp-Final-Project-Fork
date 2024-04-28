@@ -13,10 +13,12 @@ import './Booking.css';
 
 type ContactFormProps = {
   isFormSubmitted: boolean,
-  setisFormSubmitted: React.Dispatch<React.SetStateAction<boolean>>
+  setisFormSubmitted: React.Dispatch<React.SetStateAction<boolean>>,
+  error: boolean,
+  setError: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
-const BookingForm = ({setisFormSubmitted, isFormSubmitted}:ContactFormProps) => {
+const BookingForm = ({setisFormSubmitted, isFormSubmitted, error, setError}:ContactFormProps) => {
   const [startDate, setStartDate] = useState<string>('');
   const [endDate, setEndDate] = useState<string>('');
   const [selectedRoom, setSelectedRoom] = useState<number | null>(null);
@@ -68,25 +70,32 @@ const handleDelete = async (resID) => {
         endDate: endDate,
         roomID: selectedRoom
       }
+            // Should send request for room booking to the server
       await setDoc(userdataRef, {bookings: [...userbookings, bookingdata]})
-
-      // Should send request for room booking to the server
+      .then(()=>{
+            setisFormSubmitted(true);
       //Sends email with booking confirmation to the user
-      emailjs
-      .sendForm('service_i9svdvj', 'template_ihq485e', form.current, {
-        publicKey: 'nEnmgTagRKnAS2Ayl',
+            emailjs
+            .sendForm('service_i9svdvj', 'template_ihq485e', form.current, {
+              publicKey: 'nEnmgTagRKnAS2Ayl',
+            })
+            .then(
+              () => {
+                console.log('SUCCESS! Email sent');
+                
+                
+                },
+              (error) => {
+                console.log('FAILED to send email', error.text);
+              },
+            )
+
       })
-      .then(
-        () => {
-          console.log('SUCCESS!');
-          setisFormSubmitted(true);
-          
-          },
-        (error) => {
-          console.log('FAILED...', error.text);
-        },
-      )
-      // Resets the form
+      .catch(()=>{ setError(true)})
+
+
+
+       // Resets the form
       setStartDate('');
       setEndDate('');
       setSelectedRoom(null);
@@ -130,7 +139,7 @@ const handleDelete = async (resID) => {
         >
           <option value="" disabled>{t('booking_room')}</option>
           {roomdata.map(room => (
-            <option key={room.id} value={room.id}>{room.roomname} - ${room.price}</option>
+            <option key={room.id} value={room.id}>{localStorage.i18nextLng === 'PL'? room.roomnamePL: room.roomname} - ${room.price}</option>
           ))}
         </select>
         <button id="click" type="submit">{t('booking_submit')}</button>
@@ -138,14 +147,14 @@ const handleDelete = async (resID) => {
       </div>
 
       <div className='booking-list'>
-      <div className='booking-list-title'>Bookings</div>
+      <div className='booking-list-title'>{t('bookingBookings')}</div>
     {userbookings?.map((booking) => {
         return (
-          <React.Fragment>
-            <div>Start date: {booking.startDate}</div>
-            <div>End date: {booking.endDate}</div>
-            <div>Room: {booking.roomID}</div>
-            <button id="click" onClick={() => handleDelete(booking.resID)}>Delete reservation</button>
+          <React.Fragment key={booking.resID}>
+            <div>{t('bookingStartdate')} {booking.startDate}</div>
+            <div>{t('bookingEnddate')} {booking.endDate}</div>
+            <div>{t('bookingRoom')} {booking.roomID}</div>
+            <button id="click" onClick={() => handleDelete(booking.resID)}>{t('bookingDeletereservation')}</button>
           </React.Fragment>
         )
     })}

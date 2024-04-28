@@ -15,16 +15,18 @@ import { useTranslation, } from "react-i18next"
 import { useContact } from "./ContactContext";
 
 export type HeaderProps = {
-    loginPopupVisible:boolean,
-    setLoginPopupVisible:React.Dispatch<React.SetStateAction<boolean>>
+    // loginPopupVisible:boolean,
+    // setLoginPopupVisible:React.Dispatch<React.SetStateAction<boolean>>,
+    error:boolean,
+    setError:React.Dispatch<React.SetStateAction<boolean>>,
 };
 
-const Header = () => {
+const Header = ({error, setError}:HeaderProps) => {
     const { loginPopupVisible, registerPopupVisible, openLoginPopup, closeLoginPopup, openRegisterPopup, closeRegisterPopup } = useAuth();
     const { contactPopupVisible, openContactPopup, closeContactPopup } = useContact();
     const [isFormSubmitted, setisFormSubmitted] = useState(false)
     const navigate = useNavigate();
-    const {t, } =useTranslation()
+    const {t} =useTranslation();
 
     const handleSignOut = () => {
         signOut(auth)
@@ -63,9 +65,8 @@ const Header = () => {
             </div>
             {loginPopupVisible && <Login onClose={closeLoginPopup} onRegisterClick={openRegisterPopup}/>}
             {registerPopupVisible && <Register onClose={closeRegisterPopup} onLoginClick={openLoginPopup}/>}
-            {/* ts-ignore */}
             {contactPopupVisible && <ContactForm isFormSubmitted={isFormSubmitted} setisFormSubmitted={setisFormSubmitted} onClose={closeContactPopup} />}
-            {isFormSubmitted && <Toaster iconClass = "fa-solid fa-circle-check" text=' Success! We&#39;ve received your message' isFormSubmitted={isFormSubmitted} setisFormSubmitted={setisFormSubmitted} /> }
+            {isFormSubmitted && <Toaster iconID ='check' iconClass = "fa-solid fa-circle-check" text={t('ConfirmationToast')}error={error} setError={setError} isFormSubmitted={isFormSubmitted} setisFormSubmitted={setisFormSubmitted} /> }
         </header>
     );
 }
